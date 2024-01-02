@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This sitemap was dynamically generated on January 2, 2024 at 12:15 am by All in One SEO v4.5.3.1 - the original SEO plugin for WordPress. -->
+
+<?xml-stylesheet type="text/xsl" href="https://cesarortega4.github.io/Digital-Oasis/default-sitemap.xsl?sitemap=root"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<sitemap>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/post-sitemap.xml]]></loc>
+		<lastmod><![CDATA[2023-12-28T00:07:32+00:00]]></lastmod>
+	</sitemap>
+	<sitemap>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/page-sitemap.xml]]></loc>
+		<lastmod><![CDATA[2024-01-01T23:31:15+00:00]]></lastmod>
+	</sitemap>
+	<sitemap>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/category-sitemap.xml]]></loc>
+		<lastmod><![CDATA[2023-12-28T00:07:32+00:00]]></lastmod>
+	</sitemap>
+</sitemapindex>

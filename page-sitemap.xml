@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This sitemap was dynamically generated on January 2, 2024 at 12:15 am by All in One SEO v4.5.3.1 - the original SEO plugin for WordPress. -->
+
+<?xml-stylesheet type="text/xsl" href="https://cesarortega4.github.io/Digital-Oasis/default-sitemap.xsl?sitemap=page"?>
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+	<url>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/]]></loc>
+		<lastmod><![CDATA[2024-01-01T23:31:15+00:00]]></lastmod>
+		<changefreq><![CDATA[always]]></changefreq>
+		<priority><![CDATA[1]]></priority>
+		<image:image>
+			<image:loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/wp-content/uploads/2023/12/IMG_1174.jpeg]]></image:loc>
+		</image:image>
+		<image:image>
+			<image:loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/wp-content/uploads/2021/02/book-3.jpg]]></image:loc>
+		</image:image>
+		<image:image>
+			<image:loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/wp-content/uploads/2021/02/book-1.jpg]]></image:loc>
+		</image:image>
+		<image:image>
+			<image:loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/wp-content/uploads/2021/02/book-2.jpg]]></image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/what-i-offer/]]></loc>
+		<lastmod><![CDATA[2024-01-01T21:17:49+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/books/]]></loc>
+		<lastmod><![CDATA[2024-01-01T02:15:19+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/sample-page/]]></loc>
+		<lastmod><![CDATA[2023-12-28T00:07:32+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/contact/]]></loc>
+		<lastmod><![CDATA[2021-02-15T12:05:10+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[https://cesarortega4.github.io/Digital-Oasis/about/]]></loc>
+		<lastmod><![CDATA[2021-02-15T06:48:24+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+</urlset>
