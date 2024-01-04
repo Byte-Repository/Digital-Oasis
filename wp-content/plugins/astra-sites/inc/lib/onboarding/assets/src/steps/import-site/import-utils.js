@@ -126,6 +126,141 @@ export const getDemo = async ( id, storedState ) => {
 		} );
 };
 
+export const getAiDemo = async ( url, uuid, storedState ) => {
+	const [ { currentIndex }, dispatch ] = storedState;
+	const generateData = new FormData();
+	generateData.append( 'action', 'astra-sites-ai-api-request' );
+	generateData.append( 'url', url );
+	generateData.append( 'uuid', uuid );
+	generateData.append( '_ajax_nonce', astraSitesVars._ajax_nonce );
+
+	try {
+		const res = await fetch( ajaxurl, {
+			method: 'post',
+			body: generateData,
+		} );
+		const response = await res.json();
+
+		if ( response.success ) {
+			dispatch( {
+				type: 'set',
+				templateId: url,
+				templateResponse: response.data,
+				importErrorMessages: {},
+				importErrorResponse: [],
+				importError: false,
+			} );
+			return { success: true, data: response.data };
+		}
+		let errorMessages = {};
+
+		if ( undefined !== response?.data?.response_code ) {
+			const code = response.data.code.toString();
+			switch ( code ) {
+				case '401':
+				case '404':
+					errorMessages = {
+						primaryText: astraSitesVars.server_import_primary_error,
+						secondaryText: '',
+						errorCode: code,
+						errorText: response.data.message,
+						solutionText: '',
+						tryAgain: true,
+					};
+					break;
+				case '500':
+					errorMessages = {
+						primaryText: astraSitesVars.server_import_primary_error,
+						secondaryText: '',
+						errorCode: code,
+						errorText: response.data.message,
+						solutionText:
+							astraSitesVars.ajax_request_failed_secondary,
+						tryAgain: true,
+					};
+					break;
+
+				case 'WP_Error':
+					errorMessages = {
+						primaryText: astraSitesVars.client_import_primary_error,
+						secondaryText: '',
+						errorCode: code,
+						errorText: response.data.message,
+						solutionText: '',
+						tryAgain: true,
+					};
+					break;
+
+				case 'Cloudflare':
+					errorMessages = {
+						primaryText:
+							astraSitesVars.cloudflare_import_primary_error,
+						secondaryText: '',
+						errorCode: code,
+						errorText: response.data.message,
+						solutionText: '',
+						tryAgain: true,
+					};
+					break;
+
+				default:
+					errorMessages = {
+						primaryText: __(
+							'Fetching related demo failed.',
+							'astra-sites'
+						),
+						secondaryText: '',
+						errorCode: '',
+						errorText: response.data,
+						solutionText:
+							astraSitesVars.ajax_request_failed_secondary,
+						tryAgain: false,
+					};
+					break;
+			}
+			dispatch( {
+				type: 'set',
+				importError: true,
+				importErrorMessages: errorMessages,
+				importErrorResponse: response.data,
+				templateResponse: null,
+				currentIndex: currentIndex + 3,
+			} );
+		}
+		return { success: false, data: response.data };
+	} catch ( error ) {
+		dispatch( {
+			type: 'set',
+			importError: true,
+			importErrorMessages: {
+				primaryText: __(
+					'Fetching related demo failed.',
+					'astra-sites'
+				),
+				secondaryText: astraSitesVars.ajax_request_failed_secondary,
+				errorCode: '',
+				errorText: error,
+				solutionText: '',
+				tryAgain: false,
+			},
+		} );
+		console.error( error );
+		return { success: false, data: 'Fetching related demo failed' };
+	}
+};
+
+export const exportAiSite = async ( uuid ) => {
+	const exportPayload = new FormData();
+	exportPayload.append( 'action', 'astra-site-export-ai-site' );
+	exportPayload.append( '_ajax_nonce', astraSitesVars._ajax_nonce );
+	exportPayload.append( 'uuid', uuid );
+
+	return await fetch( ajaxurl, {
+		method: 'post',
+		body: exportPayload,
+	} );
+};
+
 export const checkRequiredPlugins = async ( storedState ) => {
 	const [ {}, dispatch ] = storedState;
 
@@ -272,6 +407,23 @@ export const setColorPalettes = async ( palette ) => {
 	data.append( 'action', 'astra_sites_set_site_data' );
 	data.append( 'param', 'site-colors' );
 	data.append( 'palette', palette );
+	data.append( 'security', nonce );
+
+	await fetch( ajaxurl, {
+		method: 'post',
+		body: data,
+	} );
+};
+
+export const setSiteTitle = async ( businessName ) => {
+	if ( ! businessName ) {
+		return;
+	}
+
+	const data = new FormData();
+	data.append( 'action', 'astra_sites_set_site_data' );
+	data.append( 'param', 'site-title' );
+	data.append( 'business-name', businessName );
 	data.append( 'security', nonce );
 
 	await fetch( ajaxurl, {

@@ -1,10 +1,12 @@
-// Import Variables CSS styles
 @import "./variables.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #starter-templates-ai-root {
     font-size: 16px;
 	background: var(--st-background-primary);
-	font-family: 'Inter', sans-serif;
+	font-family: 'Figtree', sans-serif;
 
 	--wp-admin-theme-color: var(--st-color-accent);
 	--wp-admin-theme-color-darker-10: var(--st-color-accent);
@@ -86,7 +88,7 @@ a {
 	background: var(--st-background-primary);
 	display: flex;
 	overflow: hidden;
-	height: calc(100vh - 77px);
+	height: calc(100vh - 60px);
 }
 
 .step-col-right {
@@ -552,7 +554,7 @@ body.step-import-site-done
 }
 
 
-//Common Css.
+/* Common Css. */
 .starter-templates-ai-steps {
 	h1 {
 		font-size: var(--st-font-size-xxl);
@@ -666,7 +668,7 @@ body.step-import-site-done
 		display: none;
 	}
 
-	//Customizer Screen.
+	/* Customizer Screen. */
 	.step-customizer {
 		.step-content {
 			background-color: var(--st-background-secondary);
@@ -772,7 +774,7 @@ body.step-import-site-done
 		}
 	}
 
-	//Congrats Screen.
+	/* Congrats Screen. */
 	.step-congrats & .step-content {
 		padding: 4%;
 	}
@@ -895,4 +897,56 @@ body.step-import-site-done
 @keyframes congrats-screen-fadeIn {
 	0% { opacity: 0.3; }
 	100% { opacity: 1; }
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.gradient-border-bottom {
+	text-align: center;
+	border-bottom: 5px solid transparent;
+	border-image: linear-gradient(
+		90deg,
+		#5A03EF 0%
+		#FE5BE4 100%,
+	);
+	border-image-slice: 1;
+	width: 100%;
+	opacity: 0.5;
+}
+
+.gradient-border-cover {
+    position: relative;
+}
+.gradient-border-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    padding: 2px;
+    background: linear-gradient(
+        180deg,
+		#5A03EF 0%,
+        #FE5BE4 100%,
+    );
+    mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+    -webkit-mask: linear-gradient(white 0 0) content-box,
+        linear-gradient(white 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+.gradient-border-cover-button::before {
+    border-radius: 12px !important;
+    padding: 1px !important;
+    inset: -1px;
+}
+
+.input-focus-border:focus{
+	border: 2px solid #2563EB !important;
 }

@@ -69,7 +69,7 @@ const DefaultStep = ( { preview, content, controls, actions, stepName } ) => {
 					</div>
 				</div>
 
-				{ actions && (
+				{ actions && currentIndex !== 0 && (
 					/* eslint-disable-next-line jsx-a11y/tabindex-no-positive -- This is a used for keyboard navigation support. */
 					<div className="step-actions" tabIndex="1">
 						{ actions }

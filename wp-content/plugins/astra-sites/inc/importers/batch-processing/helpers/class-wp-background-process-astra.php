@@ -60,6 +60,8 @@ if ( class_exists( 'WP_Background_Process' ) ) :
 
 			do_action( 'astra_sites_batch_process_complete' );
 
+			update_option( 'astra_sites_batch_process_complete', 'yes' );
+
 			// Delete Log file.
 			delete_option( 'astra_sites_recent_import_log_file' );
 		}

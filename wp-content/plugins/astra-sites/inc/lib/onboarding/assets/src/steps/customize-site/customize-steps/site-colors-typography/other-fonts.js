@@ -100,7 +100,7 @@ export const FONTS = [
 		'headings-font-variant': '',
 	},
 	{
-		'body-font-family': "'Inter', sans-serif",
+		'body-font-family': "'Figtree', sans-serif",
 		'body-font-family-slug': 'inter',
 		'body-font-variant': '',
 		'body-font-weight': 400,

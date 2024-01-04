@@ -685,10 +685,13 @@ if ( ! class_exists( 'Astra_Sites_Importer' ) ) {
 			}
 
 			$demo_data = get_option( 'astra_sites_import_data', array() );
-
+			// Set permalink structure to use post name.
+			update_option( 'permalink_structure', '/%postname%/' );
+			
 			do_action( 'astra_sites_import_complete', $demo_data );
 
 			update_option( 'astra_sites_import_complete', 'yes', 'no' );
+			update_option( 'astra_sites_batch_process_complete', 'no' );
 			delete_transient( 'astra_sites_import_started' );
 
 			if ( wp_doing_ajax() ) {
@@ -823,6 +826,8 @@ if ( ! class_exists( 'Astra_Sites_Importer' ) ) {
 				Astra_Minify::refresh_assets();
 				Astra_Sites_Importer_Log::add( 'Cache for Astra Addon cleared.' );
 			}
+
+			Astra_Sites_Utils::third_party_cache_plugins_clear_cache();
 
 			$this->update_latest_checksums();
 

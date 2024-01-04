@@ -22,6 +22,7 @@ export const getProUrl = () => {
 };
 
 export const sendPostMessage = ( data ) => {
+	// console.log( 'sendPostMessage' );
 	const frame = document.getElementById( 'astra-starter-templates-preview' );
 	if ( ! frame ) {
 		return;

@@ -101,10 +101,19 @@ function astra_sites_is_valid_url( $url = '' ) {
 		return false;
 	}
 
-	$valid_hosts = array(
-		'lh3.googleusercontent.com',
-		'pixabay.com',
+	$valid_hosts = apply_filters(
+		'astra_sites_valid_url', array(
+			'lh3.googleusercontent.com',
+			'pixabay.com',
+		)
 	);
+
+	$ai_site_url = get_option( 'ast_ai_import_current_url', '' );
+
+	if ( '' !== $ai_site_url ) {
+		$url = wp_parse_url( $ai_site_url );
+		$valid_hosts[] = $url ? $url['host'] : '';
+	}
 
 	$api_domain_parse_url = wp_parse_url( Astra_Sites::get_instance()->get_api_domain() );
 	$valid_hosts[] = $api_domain_parse_url['host'];

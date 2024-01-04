@@ -191,7 +191,7 @@ const Steps = () => {
 
 	return (
 		<div className={ `st-step ${ current.class }` }>
-			{ currentIndex !== 2 && (
+			{ ! [ 1, 2, 5 ].includes( currentIndex ) && (
 				<div className="step-header">
 					{ current.header ? (
 						current.header

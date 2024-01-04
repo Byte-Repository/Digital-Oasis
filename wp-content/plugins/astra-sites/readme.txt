@@ -5,7 +5,7 @@ Tags: Elementor,Beaver Builder,Templates,Gutenberg,Block Editor,Astra Starter Si
 Requires at least: 4.4
 Requires PHP: 7.4
 Tested up to: 6.4
-Stable tag: 3.5.7
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -134,6 +134,13 @@ We are open to suggestions and would love to work on topics that our users are l
 8. Free Images by Pixabay right inside the WordPress media popup.
 
 == Changelog ==
+
+v4.0.1 - 04-January-2024
+- Fix: Fixed an issue where the CSS looked messed up after importing using AI Website Builder.
+
+v4.0.0 - 03-January-2024
+- New: AI Website Builder.
+- Fix: Tightened the plugin security.
 
 v3.5.7 - 30-December-2023
 - Fix: Fixed Template Kit library conflict ( 503 Error ) with Gravity Form plugin.

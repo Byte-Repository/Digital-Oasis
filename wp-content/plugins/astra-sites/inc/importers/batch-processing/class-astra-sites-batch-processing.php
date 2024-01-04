@@ -863,11 +863,20 @@ if ( ! class_exists( 'Astra_Sites_Batch_Processing' ) ) :
 					return true;
 				}
 
+				$ai_site_url = get_option( 'ast_ai_import_current_url', '' );
+				$ai_host_url = '';
+
+				if ( ! empty( $ai_site_url ) ) {
+					$url = wp_parse_url( $ai_site_url );
+					$ai_host_url = ! empty( $url['host'] ) ? $url['host'] : '';
+				}
+
 				if (
 					strpos( $attachment['url'], 'brainstormforce.com' ) !== false ||
 					strpos( $attachment['url'], 'wpastra.com' ) !== false ||
 					strpos( $attachment['url'], 'sharkz.in' ) !== false ||
-					strpos( $attachment['url'], 'websitedemos.net' ) !== false
+					strpos( $attachment['url'], 'websitedemos.net' ) !== false ||
+					( ! empty( $ai_host_url ) && strpos( $attachment['url'], $ai_host_url ) !== false )
 				) {
 					return false;
 				}

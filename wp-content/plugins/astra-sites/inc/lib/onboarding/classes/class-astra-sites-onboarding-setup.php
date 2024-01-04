@@ -327,7 +327,10 @@ if ( ! class_exists( 'Astra_Sites_Onboarding_Setup' ) ) :
 
 					break;
 			}
-
+			
+			// Clearing Cache on hostinger, Cloudways.
+			Astra_Sites_Utils::third_party_cache_plugins_clear_cache();
+			
 			wp_send_json_success();
 		}
 

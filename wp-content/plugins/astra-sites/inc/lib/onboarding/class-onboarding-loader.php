@@ -52,6 +52,9 @@ class Intelligent_Starter_Templates_Loader {
 		// Starter Content.
 		require_once INTELLIGENT_TEMPLATES_DIR . 'classes/class-astra-sites-onboarding-setup.php';
 		require_once INTELLIGENT_TEMPLATES_DIR . 'classes/class-astra-sites-reporting.php';
+		require_once INTELLIGENT_TEMPLATES_DIR . 'classes/class-astra-sites-zipwp-helper.php';
+		require_once INTELLIGENT_TEMPLATES_DIR . 'classes/class-astra-sites-zipwp-integration.php';
+		require_once INTELLIGENT_TEMPLATES_DIR . 'classes/class-astra-sites-zipwp-api.php';
 
 		// Admin Menu.
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
@@ -136,7 +139,7 @@ class Intelligent_Starter_Templates_Loader {
 
 		wp_localize_script( 'jquery', 'astraSitesVars', $data );
 
-		$file = INTELLIGENT_TEMPLATES_DIR . 'assets/dist/main.asset.php';
+		$file = INTELLIGENT_TEMPLATES_DIR . 'assets/dist/onboarding/main.asset.php';
 		if ( ! file_exists( $file ) ) {
 			return;
 		}
@@ -149,7 +152,7 @@ class Intelligent_Starter_Templates_Loader {
 
 		wp_register_script(
 			'starter-templates-onboarding',
-			INTELLIGENT_TEMPLATES_URI . 'assets/dist/main.js',
+			INTELLIGENT_TEMPLATES_URI . 'assets/dist/onboarding/main.js',
 			array_merge( $asset['dependencies'] ),
 			$asset['version'],
 			true
@@ -159,6 +162,10 @@ class Intelligent_Starter_Templates_Loader {
 			'starter-templates-onboarding', 'wpApiSettings', array(
 				'root' => esc_url_raw( get_rest_url() ),
 				'nonce' => ( wp_installing() && ! is_multisite() ) ? '' : wp_create_nonce( 'wp_rest' ),
+				'zipwp_auth' => array(
+					'screen_url'   => ZIPWP_APP,
+					'redirect_url' => admin_url( 'themes.php?page=starter-templates' ),
+				),
 			)
 		);
 
@@ -169,7 +176,7 @@ class Intelligent_Starter_Templates_Loader {
 		// Set the script translations.
 		wp_set_script_translations( 'starter-templates-onboarding', 'astra-sites' );
 		
-		wp_enqueue_style( 'starter-templates-onboarding', INTELLIGENT_TEMPLATES_URI . 'assets/dist/style-main.css', array(), $asset['version'] );
+		wp_enqueue_style( 'starter-templates-onboarding', INTELLIGENT_TEMPLATES_URI . 'assets/dist/onboarding/style-main.css', array(), $asset['version'] );
 		wp_style_add_data( 'starter-templates-onboarding', 'rtl', 'replace' );
 		
 		// Load fonts from Google.
@@ -254,6 +261,7 @@ class Intelligent_Starter_Templates_Loader {
 		$fonts_url = '';
 		$font_families = array(
 			'Inter:400,500,600',
+			'Figtree:400,500,600,700'
 		);
 
 		$query_args = array(
