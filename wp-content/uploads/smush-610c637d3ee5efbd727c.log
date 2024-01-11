@@ -1,0 +1,8 @@
+[2024-01-11 02:51:46 : INFO] - Re_Smush_It_Task server status: Online 
+[2024-01-11 02:51:48 : INFO] - Processing task with ID : 1, and type 'smush' 
+[2024-01-11 02:51:48 : INFO] - Re_Smush_It_Task - attachment ID : 1312, started on : January 11, 2024 02:51:48 
+[2024-01-11 02:51:48 : INFO] - File: logo.png, Compression quality: 90 
+[2024-01-11 02:51:48 : INFO] - Backing up the original image - 2023/12/logo-updraft-pre-smush-original.png 
+[2024-01-11 02:51:51 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-01-11 02:51:51 : INFO] - Successfully optimized the image - C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/uploads/2023/12/logo.png.The file was compressed from 11.24 KB to 5.90 KB, saving 47.52 percent, using WP-Optimize 
+[2024-01-11 02:51:51 : INFO] - Completed processing task with ID : 1, and type 'smush' 
