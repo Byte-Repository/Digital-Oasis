@@ -1,0 +1,381 @@
+0000.001 (0) Opened log file at time: Tue, 30 Jan 2024 21:44:56 +0000 on http://localhost/portfolio
+0000.006 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.23.16 WP: 6.4.2 PHP: 8.2.12 (apache2handler, Windows NT PC-1 10.0 build 22621 (Windows 11) AMD64) MySQL: 10.4.32-MariaDB (max packet size=1048576) WPLANG: en_US Server: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 74M | 78M) multisite: N openssl: OpenSSL 3.0.11 19 Sep 2023 mcrypt: N LANG:  ZipArchive::addFile: N
+0000.007 (0) Free space on disk containing Updraft's temporary directory: 146261 MB
+0000.010 (0) Tasks: Backup files: 1 (schedule: unset) Backup DB: 1 (schedule: unset)
+0000.012 (0) Semaphore (fd, wp_options) being initialised
+0000.015 (0) Requesting semaphore lock (fd) (apparently not via scheduler)
+0000.019 (0) Set semaphore last lock (fd) time to 2024-01-30 21:44:56
+0000.019 (0) Semaphore lock (fd) complete
+0000.024 (0) Backup run: resumption=0, nonce=1716aabb8b0a, file_nonce=1716aabb8b0a begun at=1706651096 (0s ago), job type=backup
+0000.026 (0) Scheduling a resumption (1) after 300 seconds (1706651396) in case this run gets aborted
+0000.038 (0) Checking if we have a zip executable available
+0000.041 (0) Zip engine: ZipArchive (a.k.a. php-zip) is not available or is disabled (will use PclZip (much slower) if needed)
+0000.042 (0) Creation of backups of directories: beginning
+0000.048 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0003.927 (0) Total entities for the zip file: 1307 directories, 6464 files (0 skipped as non-modified), 132.1 MB
+0003.929 (0) Only one archive required (UpdraftPlus_PclZip) - will attempt to do in single operation (data: 135307.5 KB, split: 409600 KB)
+0003.983 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 100 files added (on-disk size: 0 KB)
+0004.031 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 200 files added (on-disk size: 0 KB)
+0004.078 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 300 files added (on-disk size: 0 KB)
+0004.129 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 400 files added (on-disk size: 0 KB)
+0004.180 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 500 files added (on-disk size: 0 KB)
+0004.228 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 600 files added (on-disk size: 0 KB)
+0004.275 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 700 files added (on-disk size: 0 KB)
+0004.321 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 800 files added (on-disk size: 0 KB)
+0004.368 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 900 files added (on-disk size: 0 KB)
+0004.414 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0004.462 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1100 files added (on-disk size: 0 KB)
+0004.510 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1200 files added (on-disk size: 0 KB)
+0004.558 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1300 files added (on-disk size: 0 KB)
+0004.604 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1400 files added (on-disk size: 0 KB)
+0004.650 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1500 files added (on-disk size: 0 KB)
+0004.700 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1600 files added (on-disk size: 0 KB)
+0004.747 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1700 files added (on-disk size: 0 KB)
+0004.794 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1800 files added (on-disk size: 0 KB)
+0004.845 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 1900 files added (on-disk size: 0 KB)
+0004.891 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2000 files added (on-disk size: 0 KB)
+0004.938 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2100 files added (on-disk size: 0 KB)
+0004.984 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2200 files added (on-disk size: 0 KB)
+0005.031 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2300 files added (on-disk size: 0 KB)
+0005.078 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2400 files added (on-disk size: 0 KB)
+0005.126 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2500 files added (on-disk size: 0 KB)
+0005.175 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2600 files added (on-disk size: 0 KB)
+0005.223 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2700 files added (on-disk size: 0 KB)
+0005.271 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2800 files added (on-disk size: 0 KB)
+0005.319 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 2900 files added (on-disk size: 0 KB)
+0005.366 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3000 files added (on-disk size: 0 KB)
+0005.414 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3100 files added (on-disk size: 0 KB)
+0005.461 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3200 files added (on-disk size: 0 KB)
+0005.510 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3300 files added (on-disk size: 0 KB)
+0005.563 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3400 files added (on-disk size: 0 KB)
+0005.609 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3500 files added (on-disk size: 0 KB)
+0005.656 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3600 files added (on-disk size: 0 KB)
+0005.703 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3700 files added (on-disk size: 0 KB)
+0005.751 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3800 files added (on-disk size: 0 KB)
+0005.797 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 3900 files added (on-disk size: 0 KB)
+0005.845 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4000 files added (on-disk size: 0 KB)
+0005.893 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4100 files added (on-disk size: 0 KB)
+0005.940 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4200 files added (on-disk size: 0 KB)
+0005.985 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4300 files added (on-disk size: 0 KB)
+0006.032 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4400 files added (on-disk size: 0 KB)
+0006.079 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4500 files added (on-disk size: 0 KB)
+0006.126 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4600 files added (on-disk size: 0 KB)
+0006.173 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4700 files added (on-disk size: 0 KB)
+0006.221 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4800 files added (on-disk size: 0 KB)
+0006.269 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 4900 files added (on-disk size: 0 KB)
+0006.316 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5000 files added (on-disk size: 0 KB)
+0006.363 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5100 files added (on-disk size: 0 KB)
+0006.409 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5200 files added (on-disk size: 0 KB)
+0006.455 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5300 files added (on-disk size: 0 KB)
+0006.502 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5400 files added (on-disk size: 0 KB)
+0006.549 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5500 files added (on-disk size: 0 KB)
+0006.597 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5600 files added (on-disk size: 0 KB)
+0006.644 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5700 files added (on-disk size: 0 KB)
+0006.693 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5800 files added (on-disk size: 0 KB)
+0006.740 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 5900 files added (on-disk size: 0 KB)
+0006.787 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 6000 files added (on-disk size: 0 KB)
+0006.834 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 6100 files added (on-disk size: 0 KB)
+0006.883 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 6200 files added (on-disk size: 0 KB)
+0006.933 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 6300 files added (on-disk size: 0 KB)
+0006.980 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.tmp: 6400 files added (on-disk size: 0 KB)
+0132.940 (0) Creating zip file manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.list-temp.tmp)
+0132.973 (0) Successfully created zip file manifest (size: 550011)
+0133.313 (0) Created plugins zip (0) - 37531.1 KB in 133.3 s (281.6 KB/s) (sha1: 8a8d6080c4fe973c4c1bfb943e8dfbe8461afef2, sha256: 699f37ed17a8a0b823e8fd4fb1cc0c250660475485085241511f5221c0bee7d9)
+0133.324 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0133.325 (0) No remote despatch: user chose no remote backup service
+0133.327 (0) Recording as successfully uploaded: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip
+0133.329 (0) Deleting zip manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip.list.tmp)
+0133.333 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0133.335 (0) Number of backup sets in history: 0; groups (db): 1
+0133.336 (0) Number of backup sets in history: 0; groups (files): 1
+0133.337 (0) Retain: saving new backup history (sets now: 0) and finishing retain operation
+0133.346 (0) Beginning creation of dump of themes (split every: 400 MB)
+0133.869 (0) Total entities for the zip file: 310 directories, 731 files (0 skipped as non-modified), 18.6 MB
+0133.871 (0) Only one archive required (UpdraftPlus_PclZip) - will attempt to do in single operation (data: 19035.6 KB, split: 409600 KB)
+0133.921 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0133.984 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0134.039 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0134.091 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 400 files added (on-disk size: 0 KB)
+0134.138 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 500 files added (on-disk size: 0 KB)
+0134.184 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 600 files added (on-disk size: 0 KB)
+0134.231 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.tmp: 700 files added (on-disk size: 0 KB)
+0140.966 (0) Creating zip file manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.list-temp.tmp)
+0140.972 (0) Successfully created zip file manifest (size: 63695)
+0141.034 (0) Created themes zip (0) - 5757.8 KB in 7.7 s (749.4 KB/s) (sha1: c587a2ddbb654f22b831f2d150f784da079d257c, sha256: 643fdb145bc2c418244f9dbca074e116a532cf2d5537038e260988de33112093)
+0141.039 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0141.040 (0) No remote despatch: user chose no remote backup service
+0141.042 (0) Recording as successfully uploaded: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip
+0141.044 (0) Deleting zip manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip.list.tmp)
+0141.046 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0141.048 (0) Number of backup sets in history: 0; groups (db): 1
+0141.049 (0) Number of backup sets in history: 0; groups (files): 1
+0141.050 (0) Retain: saving new backup history (sets now: 0) and finishing retain operation
+0141.057 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0141.058 (0) Looking for candidates to backup in: C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/uploads
+0141.060 (0) finding files: .htaccess: adding to list (1)
+0141.061 (0) finding files: 2021: adding to list (2)
+0141.062 (0) finding files: 2023: adding to list (3)
+0141.063 (0) finding files: 2024: adding to list (4)
+0141.063 (0) finding files: astra-docs: adding to list (5)
+0141.064 (0) finding files: astra-sites: adding to list (6)
+0141.065 (0) finding files: elementor: adding to list (7)
+0141.066 (0) finding files: simply-static: adding to list (8)
+0141.067 (0) finding files: smush-610c637d3ee5efbd727c.log: adding to list (9)
+0141.068 (0) finding files: wpcode: adding to list (10)
+0141.069 (0) finding files: wpforms: adding to list (11)
+0141.070 (0) finding files: wpo: adding to list (12)
+0141.071 (0) finding files: wpo-plugins-tables-list.json: adding to list (13)
+0141.072 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0141.403 (0) Total entities for the zip file: 143 directories, 549 files (0 skipped as non-modified), 68.3 MB
+0141.404 (0) Only one archive required (UpdraftPlus_PclZip) - will attempt to do in single operation (data: 69989.9 KB, split: 409600 KB)
+0141.452 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.tmp: 100 files added (on-disk size: 0 KB)
+0141.500 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.tmp: 200 files added (on-disk size: 0 KB)
+0141.547 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.tmp: 300 files added (on-disk size: 0 KB)
+0141.594 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.tmp: 400 files added (on-disk size: 0 KB)
+0141.641 (0) Zip: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.tmp: 500 files added (on-disk size: 0 KB)
+0158.977 (0) Creating zip file manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.list-temp.tmp)
+0158.982 (0) Successfully created zip file manifest (size: 69003)
+0159.356 (0) Created uploads zip (0) - 40605.6 KB in 18.3 s (2221.6 KB/s) (sha1: 9fcd1b5b3a6478a330bc3477da48f77403ea0144, sha256: 91ce6e12ee84c5e77537a17bdf54e1a8176e35992a3f7c4857b1bc5553063272)
+0159.362 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0159.363 (0) No remote despatch: user chose no remote backup service
+0159.364 (0) Recording as successfully uploaded: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip
+0159.366 (0) Deleting zip manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip.list.tmp)
+0159.369 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0159.370 (0) Number of backup sets in history: 0; groups (db): 1
+0159.371 (0) Number of backup sets in history: 0; groups (files): 1
+0159.372 (0) Retain: saving new backup history (sets now: 0) and finishing retain operation
+0159.380 (0) Beginning creation of dump of mu-plugins (split every: 400 MB)
+0159.387 (0) Total entities for the zip file: 1 directories, 1 files (0 skipped as non-modified), 0 MB
+0159.388 (0) Only one archive required (UpdraftPlus_PclZip) - will attempt to do in single operation (data: 3.9 KB, split: 409600 KB)
+0159.401 (0) Creating zip file manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip.list-temp.tmp)
+0159.403 (0) Successfully created zip file manifest (size: 71)
+0159.411 (0) Created mu-plugins zip (0) - 1.8 KB in 0 s (71.4 KB/s) (sha1: ddfc2ca9d4b84c5a645d8214ea72ffff1754a05f, sha256: e63582e642dcb0a49bb9b78d0da9e0fa106995f25dc424e9a87526a3a9eff795)
+0159.416 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0159.417 (0) No remote despatch: user chose no remote backup service
+0159.418 (0) Recording as successfully uploaded: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip
+0159.420 (0) Deleting zip manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip.list.tmp)
+0159.422 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0159.424 (0) Number of backup sets in history: 0; groups (db): 1
+0159.425 (0) Number of backup sets in history: 0; groups (files): 1
+0159.426 (0) Retain: saving new backup history (sets now: 0) and finishing retain operation
+0159.433 (0) Beginning backup of other directories found in the content directory (index: 0)
+0159.435 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0159.436 (0) Looking for candidates to backup in: C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content
+0159.437 (0) finding files: advanced-cache.php: adding to list (1)
+0159.438 (0) finding files: cache: skipping: excluded by options
+0159.439 (0) finding files: index.php: adding to list (2)
+0159.440 (0) finding files: mu-plugins: skipping: this is the mu-plugins directory
+0159.441 (0) finding files: plugins: skipping: this is the plugins directory
+0159.442 (0) finding files: themes: skipping: this is the themes directory
+0159.443 (0) finding files: updraft: skipping: this is the updraft directory
+0159.444 (0) finding files: upgrade: skipping: excluded by options
+0159.445 (0) finding files: upgrade-temp-backup: adding to list (3)
+0159.445 (0) finding files: uploads: skipping: this is the uploads directory
+0159.446 (0) finding files: wpo-cache: adding to list (4)
+0159.456 (0) Total entities for the zip file: 3 directories, 3 files (0 skipped as non-modified), 0 MB
+0159.457 (0) Only one archive required (UpdraftPlus_PclZip) - will attempt to do in single operation (data: 3.6 KB, split: 409600 KB)
+0159.482 (0) Creating zip file manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip.list-temp.tmp)
+0159.484 (0) Successfully created zip file manifest (size: 120)
+0159.493 (0) Created others zip (0) - 2.1 KB in 0 s (53.3 KB/s) (sha1: a89df30e009e75f956e7ded96e2b829b93ad1940, sha256: 9d6e548ae2d56a21ce88b0cd5c0972772e21821ba210eb66c0221bb55724b382)
+0159.497 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0159.498 (0) No remote despatch: user chose no remote backup service
+0159.499 (0) Recording as successfully uploaded: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip
+0159.501 (0) Deleting zip manifest (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip.list.tmp)
+0159.503 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0159.504 (0) Number of backup sets in history: 0; groups (db): 1
+0159.505 (0) Number of backup sets in history: 0; groups (files): 1
+0159.505 (0) Retain: saving new backup history (sets now: 0) and finishing retain operation
+0159.514 (0) Saving backup status to database (elements: 10)
+0159.516 (0) Beginning creation of database dump (WordPress DB)
+0159.517 (0) SQL compatibility mode is: NO_ZERO_IN_DATE,NO_ENGINE_SUBSTITUTION
+0159.643 (0) Table wp_options: Total expected rows (via COUNT): 448
+0159.645 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0159.848 (0) Table wp_options: Rows added in this batch (next record: 3688): 444 (uncompressed bytes in this segment=8284982) in 0.31 seconds
+0159.859 (0) Table wp_options: finishing file(s) (2, 689.3 KB)
+0159.868 (0) Table wp_users: Total expected rows (via COUNT): 1
+0159.869 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0159.874 (0) Table wp_users: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=1190) in 0.01 seconds
+0159.883 (0) Table wp_users: finishing file(s) (2, 0.6 KB)
+0159.893 (0) Table wp_usermeta: Total expected rows (via COUNT): 34
+0159.894 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0159.897 (0) Table wp_usermeta: Rows added in this batch (next record: 34): 34 (uncompressed bytes in this segment=7230) in 0.01 seconds
+0159.907 (0) Table wp_usermeta: finishing file(s) (2, 2.7 KB)
+0159.917 (0) Table wp_actionscheduler_actions: Total expected rows (via COUNT): 77
+0159.918 (0) Table is relatively small; fetch_rows will thus be: 100 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0159.922 (0) Table wp_actionscheduler_actions: Rows added in this batch (next record: 134): 77 (uncompressed bytes in this segment=32242) in 0.01 seconds
+0159.932 (0) Table wp_actionscheduler_actions: finishing file(s) (2, 3.2 KB)
+0159.939 (0) Table wp_actionscheduler_claims: Total expected rows (via COUNT): 0
+0159.942 (0) Table wp_actionscheduler_claims: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=626) in 0.01 seconds
+0159.950 (0) Table wp_actionscheduler_claims: finishing file(s) (2, 0.4 KB)
+0159.958 (0) Table wp_actionscheduler_groups: Total expected rows (via COUNT): 4
+0159.959 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0159.962 (0) Table wp_actionscheduler_groups: Rows added in this batch (next record: 4): 4 (uncompressed bytes in this segment=713) in 0.01 seconds
+0159.969 (0) Table wp_actionscheduler_groups: finishing file(s) (2, 0.4 KB)
+0159.976 (0) Table wp_actionscheduler_logs: Total expected rows (via COUNT): 218
+0159.977 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0159.983 (0) Table wp_actionscheduler_logs: Rows added in this batch (next record: 355): 218 (uncompressed bytes in this segment=20274) in 0.01 seconds
+0159.991 (0) Table wp_actionscheduler_logs: finishing file(s) (2, 2.6 KB)
+0160.000 (0) Table wp_commentmeta: Total expected rows (via COUNT): 0
+0160.002 (0) Table wp_commentmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=634) in 0.01 seconds
+0160.011 (0) Table wp_commentmeta: finishing file(s) (2, 0.4 KB)
+0160.019 (0) Table wp_comments: Total expected rows (via COUNT): 0
+0160.022 (0) Table wp_comments: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1466) in 0.01 seconds
+0160.031 (0) Table wp_comments: finishing file(s) (2, 0.5 KB)
+0160.043 (0) Table wp_links: Total expected rows (via COUNT): 0
+0160.044 (0) Table wp_links: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1027) in 0.01 seconds
+0160.052 (0) Table wp_links: finishing file(s) (2, 0.5 KB)
+0160.085 (0) Table wp_postmeta: Total expected rows (approximate): 1214
+0160.134 (0) Table wp_postmeta: Rows added in this batch (next record: 8132): 1224 (uncompressed bytes in this segment=1766594) in 0.08 seconds
+0160.143 (0) Table wp_postmeta: finishing file(s) (2, 197.1 KB)
+0160.162 (0) Table wp_posts: Total expected rows (via COUNT): 184
+0160.163 (0) Table is relatively small; fetch_rows will thus be: 250 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.178 (0) Table wp_posts: Rows added in this batch (next record: 2194): 184 (uncompressed bytes in this segment=528989) in 0.03 seconds
+0160.188 (0) Table wp_posts: finishing file(s) (2, 25.3 KB)
+0160.194 (0) Table wp_term_relationships: Total expected rows (approximate): 18
+0160.198 (0) Table wp_term_relationships: Rows added in this batch (next record: 100000): 18 (uncompressed bytes in this segment=963) in 0.01 seconds
+0160.206 (0) Table wp_term_relationships: finishing file(s) (2, 0.4 KB)
+0160.215 (0) Table wp_term_taxonomy: Total expected rows (via COUNT): 16
+0160.216 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.218 (0) Table wp_term_taxonomy: Rows added in this batch (next record: 17): 16 (uncompressed bytes in this segment=1464) in 0.01 seconds
+0160.227 (0) Table wp_term_taxonomy: finishing file(s) (2, 0.6 KB)
+0160.236 (0) Table wp_termmeta: Total expected rows (via COUNT): 1
+0160.237 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.238 (0) Table wp_termmeta: Rows added in this batch (next record: 2): 1 (uncompressed bytes in this segment=701) in 0.01 seconds
+0160.247 (0) Table wp_termmeta: finishing file(s) (2, 0.4 KB)
+0160.255 (0) Table wp_terms: Total expected rows (via COUNT): 16
+0160.256 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.258 (0) Table wp_terms: Rows added in this batch (next record: 17): 16 (uncompressed bytes in this segment=1189) in 0.01 seconds
+0160.265 (0) Table wp_terms: finishing file(s) (2, 0.6 KB)
+0160.277 (0) Table wp_aioseo_cache: Total expected rows (via COUNT): 16
+0160.277 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.281 (0) Table wp_aioseo_cache: Rows added in this batch (next record: 116): 16 (uncompressed bytes in this segment=96291) in 0.01 seconds
+0160.291 (0) Table wp_aioseo_cache: finishing file(s) (2, 18.4 KB)
+0160.301 (0) Table wp_aioseo_notifications: Total expected rows (via COUNT): 1
+0160.301 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.303 (0) Table wp_aioseo_notifications: Rows added in this batch (next record: 3): 1 (uncompressed bytes in this segment=1893) in 0.01 seconds
+0160.312 (0) Table wp_aioseo_notifications: finishing file(s) (2, 0.8 KB)
+0160.325 (0) Table wp_aioseo_posts: Total expected rows (via COUNT): 43
+0160.326 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.330 (0) Table wp_aioseo_posts: Rows added in this batch (next record: 43): 43 (uncompressed bytes in this segment=40670) in 0.01 seconds
+0160.387 (0) Table wp_aioseo_posts: finishing file(s) (2, 2.4 KB)
+0160.396 (0) Table wp_e_events: Total expected rows (via COUNT): 0
+0160.398 (0) Table wp_e_events: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=511) in 0.01 seconds
+0160.405 (0) Table wp_e_events: finishing file(s) (2, 0.3 KB)
+0160.412 (0) Table wp_simply_static_pages: Total expected rows (approximate): 6185
+0160.599 (0) Table wp_simply_static_pages: Rows added in this batch (next record: 288714): 6538 (uncompressed bytes in this segment=2566590) in 0.19 seconds
+0160.607 (0) Table wp_simply_static_pages: finishing file(s) (2, 88.9 KB)
+0160.619 (0) Table wp_tm_taskmeta: Total expected rows (via COUNT): 1
+0160.627 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.634 (0) Table wp_tm_taskmeta: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=1557) in 0.02 seconds
+0160.644 (0) Table wp_tm_taskmeta: finishing file(s) (2, 0.8 KB)
+0160.655 (0) Table wp_tm_tasks: Total expected rows (via COUNT): 1
+0160.657 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.660 (0) Table wp_tm_tasks: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=962) in 0.01 seconds
+0160.676 (0) Table wp_tm_tasks: finishing file(s) (2, 0.5 KB)
+0160.687 (0) Table wp_wpforms_payment_meta: Total expected rows (via COUNT): 0
+0160.690 (0) Table wp_wpforms_payment_meta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=690) in 0.01 seconds
+0160.703 (0) Table wp_wpforms_payment_meta: finishing file(s) (2, 0.4 KB)
+0160.714 (0) Table wp_wpforms_payments: Total expected rows (via COUNT): 0
+0160.717 (0) Table wp_wpforms_payments: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1650) in 0.01 seconds
+0160.726 (0) Table wp_wpforms_payments: finishing file(s) (2, 0.6 KB)
+0160.737 (0) Table wp_wpforms_tasks_meta: Total expected rows (via COUNT): 15
+0160.738 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.741 (0) Table wp_wpforms_tasks_meta: Rows added in this batch (next record: 37): 15 (uncompressed bytes in this segment=1758) in 0.01 seconds
+0160.751 (0) Table wp_wpforms_tasks_meta: finishing file(s) (2, 0.6 KB)
+0160.761 (0) Table wp_wpmailsmtp_debug_events: Total expected rows (via COUNT): 10
+0160.762 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.764 (0) Table wp_wpmailsmtp_debug_events: Rows added in this batch (next record: 10): 10 (uncompressed bytes in this segment=3398) in 0.01 seconds
+0160.774 (0) Table wp_wpmailsmtp_debug_events: finishing file(s) (2, 0.7 KB)
+0160.787 (0) Table wp_wpmailsmtp_tasks_meta: Total expected rows (via COUNT): 1
+0160.788 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0160.790 (0) Table wp_wpmailsmtp_tasks_meta: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=704) in 0.01 seconds
+0160.801 (0) Table wp_wpmailsmtp_tasks_meta: finishing file(s) (2, 0.4 KB)
+0160.802 (0) PHP event: code E_WARNING: filemtime(): stat failed for C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/updraft/backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db.gz (line 1976, C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio\wp-content\plugins\updraftplus\backup.php)
+0160.804 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_options.table.tmpr3689.gz (1/28/fopen): adding to final database dump
+0160.829 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_options.table.gz (2/28/fopen): adding to final database dump
+0160.830 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_users.table.tmpr2.gz (3/28/fopen): adding to final database dump
+0160.832 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_users.table.gz (4/28/fopen): adding to final database dump
+0160.846 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_usermeta.table.tmpr35.gz (5/28/fopen): adding to final database dump
+0160.849 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_usermeta.table.gz (6/28/fopen): adding to final database dump
+0160.851 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_actions.table.tmpr135.gz (7/28/fopen): adding to final database dump
+0160.852 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_actions.table.gz (8/28/fopen): adding to final database dump
+0160.853 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_claims.table.tmpr0.gz (9/28/fopen): adding to final database dump
+0160.854 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_claims.table.gz (10/28/fopen): adding to final database dump
+0160.855 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_groups.table.tmpr5.gz (11/28/fopen): adding to final database dump
+0160.857 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_groups.table.gz (12/28/fopen): adding to final database dump
+0160.858 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_logs.table.tmpr356.gz (13/28/fopen): adding to final database dump
+0160.859 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_actionscheduler_logs.table.gz (14/28/fopen): adding to final database dump
+0160.860 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_commentmeta.table.tmpr0.gz (15/28/fopen): adding to final database dump
+0160.862 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_commentmeta.table.gz (16/28/fopen): adding to final database dump
+0160.863 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_comments.table.tmpr0.gz (17/28/fopen): adding to final database dump
+0160.864 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_comments.table.gz (18/28/fopen): adding to final database dump
+0160.865 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_links.table.tmpr0.gz (19/28/fopen): adding to final database dump
+0160.867 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_links.table.gz (20/28/fopen): adding to final database dump
+0160.868 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_postmeta.table.tmpr8133.gz (21/28/fopen): adding to final database dump
+0160.875 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_postmeta.table.gz (22/28/fopen): adding to final database dump
+0160.877 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_posts.table.tmpr2195.gz (23/28/fopen): adding to final database dump
+0160.879 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_posts.table.gz (24/28/fopen): adding to final database dump
+0160.880 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_term_relationships.table.tmpr100001.gz (25/28/fopen): adding to final database dump
+0160.881 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_term_relationships.table.gz (26/28/fopen): adding to final database dump
+0160.882 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_term_taxonomy.table.tmpr18.gz (27/28/fopen): adding to final database dump
+0160.884 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_term_taxonomy.table.gz (28/28/fopen): adding to final database dump
+0160.885 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_termmeta.table.tmpr3.gz (29/28/fopen): adding to final database dump
+0160.886 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_termmeta.table.gz (30/28/fopen): adding to final database dump
+0160.887 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_terms.table.tmpr18.gz (31/28/fopen): adding to final database dump
+0160.888 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_terms.table.gz (32/28/fopen): adding to final database dump
+0160.889 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_aioseo_cache.table.tmpr117.gz (33/28/fopen): adding to final database dump
+0160.891 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_aioseo_cache.table.gz (34/28/fopen): adding to final database dump
+0160.892 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_aioseo_notifications.table.tmpr4.gz (35/28/fopen): adding to final database dump
+0160.893 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_aioseo_notifications.table.gz (36/28/fopen): adding to final database dump
+0160.894 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_aioseo_posts.table.tmpr44.gz (37/28/fopen): adding to final database dump
+0160.896 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_aioseo_posts.table.gz (38/28/fopen): adding to final database dump
+0160.897 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_e_events.table.tmpr0.gz (39/28/fopen): adding to final database dump
+0160.898 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_e_events.table.gz (40/28/fopen): adding to final database dump
+0160.899 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_simply_static_pages.table.tmpr288715.gz (41/28/fopen): adding to final database dump
+0160.903 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_simply_static_pages.table.gz (42/28/fopen): adding to final database dump
+0160.904 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_tm_taskmeta.table.tmpr2.gz (43/28/fopen): adding to final database dump
+0160.906 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_tm_taskmeta.table.gz (44/28/fopen): adding to final database dump
+0160.906 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_tm_tasks.table.tmpr2.gz (45/28/fopen): adding to final database dump
+0160.908 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_tm_tasks.table.gz (46/28/fopen): adding to final database dump
+0160.909 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpforms_payment_meta.table.tmpr0.gz (47/28/fopen): adding to final database dump
+0160.910 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpforms_payment_meta.table.gz (48/28/fopen): adding to final database dump
+0160.911 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpforms_payments.table.tmpr0.gz (49/28/fopen): adding to final database dump
+0160.913 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpforms_payments.table.gz (50/28/fopen): adding to final database dump
+0160.914 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpforms_tasks_meta.table.tmpr38.gz (51/28/fopen): adding to final database dump
+0160.915 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpforms_tasks_meta.table.gz (52/28/fopen): adding to final database dump
+0160.916 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpmailsmtp_debug_events.table.tmpr11.gz (53/28/fopen): adding to final database dump
+0160.917 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpmailsmtp_debug_events.table.gz (54/28/fopen): adding to final database dump
+0160.918 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpmailsmtp_tasks_meta.table.tmpr2.gz (55/28/fopen): adding to final database dump
+0160.919 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db-table-wp_wpmailsmtp_tasks_meta.table.gz (56/28/fopen): adding to final database dump
+0160.932 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db.gz: finished writing out complete database file (1039.8 KB)
+0160.958 (0) Total database tables backed up: 28 (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db.gz, size: 1064843, sha1: e3dddb01bf253663754c291624bb26ecd306617c, sha256: bf82bb5d8f8603a60ca4f8878241599113dcff84e0a63d397ceece37b356ec62)
+0160.964 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip: plugins: This file has already been successfully uploaded
+0160.965 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip: themes: This file has already been successfully uploaded
+0160.966 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip: uploads: This file has already been successfully uploaded
+0160.967 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip: mu-plugins: This file has already been successfully uploaded
+0160.968 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip: others: This file has already been successfully uploaded
+0160.969 (0) backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db.gz: db: This file has not yet been successfully uploaded: will queue
+0160.969 (0) Saving backup history. Total backup size: 82.9 MB
+0160.972 (0) Requesting upload of the files that have not yet been successfully uploaded (1)
+0160.975 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0160.976 (0) No remote despatch: user chose no remote backup service
+0160.977 (0) Recording as successfully uploaded: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-db.gz
+0160.980 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0160.982 (0) Number of backup sets in history: 1; groups (db): 1
+0160.983 (0) Examining (for databases) backup set with group_id=0, nonce=1716aabb8b0a, datestamp=1706651096 (Jan 30 2024 21:44:56)
+0160.984 (0) This backup set is the backup set just made, so will not be deleted.
+0160.984 (0) Number of backup sets in history: 1; groups (files): 1
+0160.985 (0) Examining (for files) backup set with nonce=1716aabb8b0a, datestamp=1706651096 (Jan 30 2024 21:44:56)
+0160.985 (0) This backup set is the backup set just made, so will not be deleted.
+0160.986 (0) This backup set is the backup set just made, so will not be deleted.
+0160.986 (0) This backup set is the backup set just made, so will not be deleted.
+0160.986 (0) This backup set is the backup set just made, so will not be deleted.
+0160.986 (0) This backup set is the backup set just made, so will not be deleted.
+0160.986 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0160.987 (0) Retain: saving new backup history (sets now: 1) and finishing retain operation
+0160.989 (0) Resume backup (1716aabb8b0a, 0): finish run
+0160.991 (0) Decremented the semaphore (fd) by 1
+0160.993 (0) Semaphore (fd) unlocked
+0160.996 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0160.999 (0) No email will/can be sent - the user has not configured an email address.
+0161.000 (0) The backup succeeded and is now complete

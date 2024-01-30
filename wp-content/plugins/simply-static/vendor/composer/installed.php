@@ -6,19 +6,19 @@
     'aliases' => 
     array (
     ),
-    'reference' => '57ab3368fb2359ebea4895698004694c83524bbf',
+    'reference' => 'f065ee2d7c043cc014af40e2f1d248b4a81193bd',
     'name' => 'patrickposner/simply-static',
   ),
   'versions' => 
   array (
     'a5hleyrich/wp-background-processing' => 
     array (
-      'pretty_version' => '1.1.1',
-      'version' => '1.1.1.0',
+      'pretty_version' => '1.2',
+      'version' => '1.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ebbed762c42e70e76573ffbd36e591378ba5f2ee',
+      'reference' => 'a0018fea79b8e752f41b6a26d6b9b3397d15c52e',
     ),
     'patrickposner/simply-static' => 
     array (
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '57ab3368fb2359ebea4895698004694c83524bbf',
+      'reference' => 'f065ee2d7c043cc014af40e2f1d248b4a81193bd',
     ),
     'symfony/css-selector' => 
     array (
