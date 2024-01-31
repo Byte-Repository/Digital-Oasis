@@ -119,17 +119,12 @@ class Tags {
 
 			// Delete tag (term).
 			if ( wp_delete_term( $tag_id, WPForms_Form_Handler::TAGS_TAXONOMY ) === true ) {
-				++$deleted;
+				$deleted++;
 			}
 		}
 
-		// The tag was not found among the forms, no need to continue.
-		if ( empty( $forms ) ) {
-			wp_send_json_success( [ 'deleted' => $deleted ] );
-		}
-
 		// Remove tags from the settings of the forms.
-		foreach ( (array) $forms as $form_id ) {
+		foreach ( $forms as $form_id ) {
 			$form_data = $form_obj->get( $form_id, [ 'content_only' => true ] );
 
 			if (
@@ -144,7 +139,11 @@ class Tags {
 			$form_obj->update( $form_id, $form_data );
 		}
 
-		wp_send_json_success( [ 'deleted' => $deleted ] );
+		wp_send_json_success(
+			[
+				'deleted' => $deleted,
+			]
+		);
 	}
 
 	/**

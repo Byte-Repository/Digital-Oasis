@@ -83,7 +83,11 @@ const ImportLoaderAi = ( { onClickNext } ) => {
 			>
 				<div className={ `ist-import-progress-info-text` }>
 					<span className="import-status-string">
-					<p>{ importStatus + decodeEntities( '&nbsp;' ) }</p>
+						<p>
+							{ importError
+								? 'Please try again after some time'
+								: importStatus + decodeEntities( '&nbsp;' ) }
+						</p>
 					</span>
 					<div className="import-done-section">
 						{ /* <div className="tweet-import-success">

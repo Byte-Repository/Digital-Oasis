@@ -22,12 +22,12 @@ class AuthorizationService extends \WPForms\Vendor\Stripe\Service\AbstractServic
         return $this->requestCollection('get', '/v1/issuing/authorizations', $params, $opts);
     }
     /**
-     * [Deprecated] Approves a pending Issuing <code>Authorization</code> object. This
-     * request should be made within the timeout window of the <a
+     * Approves a pending Issuing <code>Authorization</code> object. This request
+     * should be made within the timeout window of the <a
      * href="/docs/issuing/controls/real-time-authorizations">real-time
-     * authorization</a> flow.  This method is deprecated. Instead, <a
-     * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">respond
-     * directly to the webhook request to approve an authorization</a>.
+     * authorization</a> flow.  You can also respond directly to the webhook request to
+     * approve an authorization (preferred). More details can be found <a
+     * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">here</a>.
      *
      * @param string $id
      * @param null|array $params
@@ -42,12 +42,12 @@ class AuthorizationService extends \WPForms\Vendor\Stripe\Service\AbstractServic
         return $this->request('post', $this->buildPath('/v1/issuing/authorizations/%s/approve', $id), $params, $opts);
     }
     /**
-     * [Deprecated] Declines a pending Issuing <code>Authorization</code> object. This
-     * request should be made within the timeout window of the <a
+     * Declines a pending Issuing <code>Authorization</code> object. This request
+     * should be made within the timeout window of the <a
      * href="/docs/issuing/controls/real-time-authorizations">real time
-     * authorization</a> flow. This method is deprecated. Instead, <a
-     * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">respond
-     * directly to the webhook request to decline an authorization</a>.
+     * authorization</a> flow. You can also respond directly to the webhook request to
+     * decline an authorization (preferred). More details can be found <a
+     * href="/docs/issuing/controls/real-time-authorizations#authorization-handling">here</a>.
      *
      * @param string $id
      * @param null|array $params

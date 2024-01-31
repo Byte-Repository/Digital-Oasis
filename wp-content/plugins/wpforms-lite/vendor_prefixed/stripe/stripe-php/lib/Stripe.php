@@ -17,8 +17,8 @@ class Stripe
     public static $connectBase = 'https://connect.stripe.com';
     /** @var string The base URL for the Stripe API uploads endpoint. */
     public static $apiUploadBase = 'https://files.stripe.com';
-    /** @var string The version of the Stripe API to use for requests. */
-    public static $apiVersion = \WPForms\Vendor\Stripe\Util\ApiVersion::CURRENT;
+    /** @var null|string The version of the Stripe API to use for requests. */
+    public static $apiVersion = null;
     /** @var null|string The account ID for connected accounts requests. */
     public static $accountId = null;
     /** @var string Path to the CA bundle used to verify SSL certificates */
@@ -42,7 +42,7 @@ class Stripe
     private static $maxRetryAfter = 60.0;
     /** @var float Initial delay between retries, in seconds */
     private static $initialNetworkRetryDelay = 0.5;
-    const VERSION = '13.6.0';
+    const VERSION = '10.17.0';
     /**
      * @return string the API key used for requests
      */
@@ -95,7 +95,8 @@ class Stripe
         self::$clientId = $clientId;
     }
     /**
-     * @return string the API version used for requests
+     * @return string The API version used for requests. null if we're using the
+     *    latest version.
      */
     public static function getApiVersion()
     {

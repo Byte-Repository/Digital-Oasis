@@ -85,15 +85,17 @@ class BulkActions {
 			return;
 		}
 
+		$error = __( 'Are you sure you want to do this?', 'wpforms-lite' );
+
 		if ( ! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'bulk-wpforms_page_wpforms-payments' ) ) {
-			wp_die( esc_html__( 'Your session expired. Please reload the page.', 'wpforms-lite' ) );
+			wp_die( esc_html( $error ) );
 		}
 
 		$this->ids    = array_map( 'absint', (array) $_GET['payment_id'] );
 		$this->action = $this->current_action();
 
 		if ( empty( $this->ids ) || ! $this->action || ! $this->is_allowed_action( $this->action ) ) {
-			return;
+			wp_die( esc_html( $error ) );
 		}
 
 		$this->process_action();

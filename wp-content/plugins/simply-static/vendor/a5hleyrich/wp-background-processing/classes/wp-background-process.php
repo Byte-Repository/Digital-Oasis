@@ -5,11 +5,6 @@
  * @package WP-Background-Processing
  */
 
-// phpcs:disable Generic.Commenting.DocComment.MissingShort
-/** @noinspection PhpIllegalPsrClassPathInspection */
-/** @noinspection AutoloadingIssuesInspection */
-// phpcs:disable Generic.Commenting.DocComment.MissingShort
-
 /**
  * Abstract WP_Background_Process class.
  *
@@ -78,7 +73,6 @@ abstract class WP_Background_Process extends WP_Async_Request {
 		$this->cron_interval_identifier = $this->identifier . '_cron_interval';
 
 		add_action( $this->cron_hook_identifier, array( $this, 'handle_cron_healthcheck' ) );
-		// phpcs:ignore WordPress.WP.CronInterval.ChangeDetected
 		add_filter( 'cron_schedules', array( $this, 'schedule_cron_healthcheck' ) );
 	}
 
@@ -196,7 +190,11 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	public function is_cancelled() {
 		$status = get_site_option( $this->get_status_key(), 0 );
 
-		return absint( $status ) === self::STATUS_CANCELLED;
+		if ( absint( $status ) === self::STATUS_CANCELLED ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -221,7 +219,11 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	public function is_paused() {
 		$status = get_site_option( $this->get_status_key(), 0 );
 
-		return absint( $status ) === self::STATUS_PAUSED;
+		if ( absint( $status ) === self::STATUS_PAUSED ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -339,7 +341,6 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	 * Is queue empty?
 	 *
 	 * @return bool
-	 * @noinspection IsEmptyFunctionUsageInspection
 	 */
 	protected function is_queue_empty() {
 		return empty( $this->get_batch() );
@@ -355,7 +356,6 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	 *
 	 * @deprecated 1.1.0 Superseded.
 	 * @see        is_processing()
-	 * @noinspection PhpUnused
 	 */
 	protected function is_process_running() {
 		return $this->is_processing();
@@ -412,7 +412,7 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	protected function get_batch() {
 		return array_reduce(
 			$this->get_batches( 1 ),
-			static function ( $carry, $batch ) {
+			function ( $carry, $batch ) {
 				return $batch;
 			},
 			array()
@@ -451,7 +451,7 @@ abstract class WP_Background_Process extends WP_Async_Request {
 			SELECT *
 			FROM ' . $table . '
 			WHERE ' . $column . ' LIKE %s
-			ORDER BY ' . $key_column . '
+			ORDER BY ' . $key_column . ' ASC
 			';
 
 		$args = array( $key );
@@ -468,7 +468,7 @@ abstract class WP_Background_Process extends WP_Async_Request {
 
 		if ( ! empty( $items ) ) {
 			$batches = array_map(
-				static function ( $item ) use ( $column, $value_column ) {
+				function ( $item ) use ( $column, $value_column ) {
 					$batch       = new stdClass();
 					$batch->key  = $item->{$column};
 					$batch->data = maybe_unserialize( $item->{$value_column} );
@@ -487,8 +487,6 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	 *
 	 * Pass each queue item to the task handler, while remaining
 	 * within server memory and time limit constraints.
-	 *
-	 * @noinspection DisconnectedForeachInstructionInspection
 	 */
 	protected function handle() {
 		$this->lock_process();
@@ -586,7 +584,7 @@ abstract class WP_Background_Process extends WP_Async_Request {
 			$memory_limit = '128M';
 		}
 
-		if ( ! $memory_limit || -1 === (int) $memory_limit ) {
+		if ( ! $memory_limit || -1 === intval( $memory_limit ) ) {
 			// Unlimited, set to 32GB.
 			$memory_limit = '32000M';
 		}
@@ -606,10 +604,7 @@ abstract class WP_Background_Process extends WP_Async_Request {
 		$finish = $this->start_time + apply_filters( $this->identifier . '_default_time_limit', 20 ); // 20 seconds
 		$return = false;
 
-		if (
-			! ( defined( 'WP_CLI' ) && WP_CLI ) &&
-			time() >= $finish
-		) {
+		if ( time() >= $finish ) {
 			$return = true;
 		}
 
@@ -717,7 +712,6 @@ abstract class WP_Background_Process extends WP_Async_Request {
 	 *
 	 * @deprecated 1.1.0 Superseded.
 	 * @see        cancel()
-	 * @noinspection PhpUnused
 	 */
 	public function cancel_process() {
 		$this->cancel();

@@ -496,6 +496,15 @@ class Widget_Divider extends Widget_Base {
 		);
 
 		$this->add_control(
+			'view',
+			[
+				'label' => esc_html__( 'View', 'elementor' ),
+				'type' => Controls_Manager::HIDDEN,
+				'default' => 'traditional',
+			]
+		);
+
+		$this->add_control(
 			'text',
 			[
 				'label' => esc_html__( 'Text', 'elementor' ),
@@ -582,7 +591,6 @@ class Widget_Divider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Weight', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'default' => [
 					'size' => 1,
 				],
@@ -591,14 +599,6 @@ class Widget_Divider extends Widget_Base {
 						'min' => 1,
 						'max' => 10,
 						'step' => 0.1,
-					],
-					'em' => [
-						'min' => 0.1,
-						'max' => 1,
-					],
-					'rem' => [
-						'min' => 0.1,
-						'max' => 1,
 					],
 				],
 				'render_type' => 'template',
@@ -686,7 +686,7 @@ class Widget_Divider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-divider' => 'padding-block-start: {{SIZE}}{{UNIT}}; padding-block-end: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-divider' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 			]
@@ -767,21 +767,9 @@ class Widget_Divider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
 					'px' => [
-						'max' => 50,
-					],
-					'%' => [
-						'max' => 50,
-					],
-					'em' => [
-						'max' => 5,
-					],
-					'rem' => [
-						'max' => 5,
-					],
-					'vw' => [
+						'min' => 0,
 						'max' => 50,
 					],
 				],
@@ -824,16 +812,10 @@ class Widget_Divider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Size', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
-						'max' => 100,
-					],
-					'em' => [
-						'max' => 10,
-					],
-					'rem' => [
-						'max' => 10,
+						'min' => 6,
+						'max' => 300,
 					],
 				],
 				'selectors' => [
@@ -847,19 +829,11 @@ class Widget_Divider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Padding', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon' => 'padding: {{SIZE}}{{UNIT}};',
 				],
 				'range' => [
-					'px' => [
-						'max' => 50,
-					],
 					'em' => [
-						'min' => 0,
-						'max' => 5,
-					],
-					'rem' => [
 						'min' => 0,
 						'max' => 5,
 					],
@@ -925,7 +899,6 @@ class Widget_Divider extends Widget_Base {
 				],
 				'default' => 'center',
 				'prefix_class' => 'elementor-widget-divider--element-align-',
-				'separator' => 'before',
 			]
 		);
 
@@ -934,22 +907,15 @@ class Widget_Divider extends Widget_Base {
 			[
 				'label' => esc_html__( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
+						'min' => 0,
 						'max' => 50,
-					],
-					'em' => [
-						'max' => 5,
-					],
-					'rem' => [
-						'max' => 5,
 					],
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => '--divider-element-spacing: {{SIZE}}{{UNIT}}',
 				],
-				'separator' => 'before',
 			]
 		);
 

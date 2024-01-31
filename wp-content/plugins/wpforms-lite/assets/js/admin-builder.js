@@ -33,8 +33,6 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			pagebreakTop:     false,
 			pagebreakBottom:  false,
 			upload_img_modal: false,
-			choicesLimit:     20, // Choices  limit for fields different than Dropdown.
-			choicesLimitLong: 250, // Choices limit for Dropdown field.
 		},
 
 		/**
@@ -239,6 +237,9 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 			// Secret builder hotkeys.
 			app.builderHotkeys();
+
+			// Clone form title to the Setup page.
+			$( '#wpforms-setup-name' ).val( $( '#wpforms-panel-field-settings-form_title' ).val() );
 
 			// jquery-confirm defaults.
 			jconfirm.defaults = {
@@ -605,15 +606,14 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 				 *
 				 * @param {string} fieldId Field ID.
 				 */
-				convertModernToClassic: ( fieldId ) => {
-					const $primary = app.dropdownField.helpers.getPrimarySelector( fieldId ),
+				convertModernToClassic: function( fieldId ) {
+
+					var $primary         = app.dropdownField.helpers.getPrimarySelector( fieldId ),
 						isDynamicChoices = app.dropdownField.helpers.isDynamicChoices( fieldId ),
-						instance = app.dropdownField.helpers.getInstance( $primary ),
-						$sidebarChoices = $( '#wpforms-field-option-row-' + fieldId + '-choices' ),
-						$sidebarList = $sidebarChoices.find( '.choices-list' ),
-						elementsCount = $sidebarList.find( 'li' ).length;
+						instance         = app.dropdownField.helpers.getInstance( $primary );
 
 					if ( instance && typeof instance.destroy === 'function' ) {
+
 						// Destroy the instance of Choices.js.
 						instance.destroy();
 
@@ -623,7 +623,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 					// Update choices.
 					if ( ! isDynamicChoices ) {
-						app.fieldChoiceUpdate( 'select', fieldId, elementsCount );
+						app.fieldChoiceUpdate( 'select', fieldId );
 					}
 				},
 
@@ -1698,13 +1698,16 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		 *
 		 * @param {string} panel Panel slug.
 		 *
-		 * @return {void|boolean} Void or false.
+		 * @returns {mixed} Void or false.
 		 */
-		panelSwitch( panel ) {
-			const $panel = $( '#wpforms-panel-' + panel );
+		panelSwitch: function( panel ) {
+
+			var $panel = $( '#wpforms-panel-' + panel ),
+				$panelBtn = $( '.wpforms-panel-' + panel + '-button' );
 
 			if ( ! $panel.hasClass( 'active' ) ) {
-				const event = WPFormsUtils.triggerEvent( $builder, 'wpformsPanelSwitch', [ panel ] );
+
+				const event = WPFormsUtils.triggerEvent( $builder, 'wpformsPanelSwitch', [ panel ]  );
 
 				// Allow callbacks on `wpformsPanelSwitch` to cancel panel switching by triggering `event.preventDefault()`.
 				if ( event.isDefaultPrevented() || ! wpforms_panel_switch ) {
@@ -1713,7 +1716,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 				$( '#wpforms-panels-toggle' ).find( 'button' ).removeClass( 'active' );
 				$( '.wpforms-panel' ).removeClass( 'active' );
-				$( '.wpforms-panel-' + panel + '-button' ).addClass( 'active' );
+				$panelBtn.addClass( 'active' );
 				$panel.addClass( 'active' );
 
 				history.replaceState( {}, null, wpf.updateQueryString( 'view', panel ) );
@@ -1855,8 +1858,6 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 					return;
 				}
 
-				WPForms.Admin.Builder.ContextMenu.hideMenu();
-
 				app.fieldDelete( $( this ).parent().data( 'field-id' ) );
 			} );
 
@@ -1869,8 +1870,6 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 				if ( app.isFormPreviewActionsDisabled( this ) ) {
 					return;
 				}
-
-				WPForms.Admin.Builder.ContextMenu.hideMenu();
 
 				app.fieldDuplicate( $( this ).parent().data( 'field-id' ) );
 			} );
@@ -1958,7 +1957,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 					$this.attr( 'data-checked', '0' );
 				}
 
-				app.fieldChoiceUpdate( list.data( 'field-type' ), list.data( 'field-id' ), list.find( 'li' ).length );
+				app.fieldChoiceUpdate( list.data( 'field-type' ), list.data( 'field-id' ) );
 			} );
 
 			// Field choices update preview area
@@ -1966,7 +1965,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 				const list = $( this ).parent().parent();
 
-				app.fieldChoiceUpdate( list.data( 'field-type' ), list.data( 'field-id' ), list.find( 'li' ).length );
+				app.fieldChoiceUpdate( list.data( 'field-type' ), list.data( 'field-id' ) );
 			} );
 
 			// Field choices display value toggle
@@ -2450,13 +2449,12 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			// Real-time updates for Date/Time, Name and Single Item "Format" option.
 			$builder.on( 'change', '.wpforms-field-option-row-format select', function() {
 
-				const $this = $( this ),
-					value = $this.val(),
-					id = $this.parent().data( 'field-id' ),
-					$sublabelToggle = $( '#wpforms-field-option-row-' + id + '-sublabel_hide' ),
-					$preview = $( '#wpforms-field-' + id );
+				const $this         = $( this ),
+					value           = $this.val(),
+					id              = $this.parent().data( 'field-id' ),
+					$sublabelToggle = $( '#wpforms-field-option-row-' + id + '-sublabel_hide' );
 
-				$preview.find( '.format-selected' ).removeClass().addClass( 'format-selected format-selected-' + value );
+				$( '#wpforms-field-' + id ).find( '.format-selected' ).removeClass().addClass( 'format-selected format-selected-' + value );
 				$( '#wpforms-field-option-' + id ).find( '.format-selected' ).removeClass().addClass( 'format-selected format-selected-' + value );
 
 				// Show toggle for "Hide Sublabels" only when field consists of more than one subfield.
@@ -2468,18 +2466,11 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 				// Toggle "Placeholder" option for Single Item "Format".
 				if ( [ 'single', 'user', 'hidden' ].includes( value ) ) {
-					const isUserDefined = value === 'user',
-						$minPriceOption = $( '#wpforms-field-option-' + id + '-min_price' ),
-						minPrice = wpf.amountSanitize( $minPriceOption.val() ),
-						isValidMinPrice = minPrice >= $minPriceOption.data( 'minimum-price' ),
-						$minPriceOptionRow = $( '#wpforms-field-option-row-' + id + '-min_price' );
+					const $placeholderOption = $( '#wpforms-field-option-row-' + id + '-placeholder' );
 
-					$( '#wpforms-field-option-row-' + id + '-placeholder' ).toggleClass( 'wpforms-hidden', isUserDefined );
-					$minPriceOptionRow.toggleClass( 'wpforms-hidden', ! isUserDefined );
-					$minPriceOptionRow.find( '.wpforms-item-minimum-price-alert' ).toggleClass( 'wpforms-hidden', isValidMinPrice );
-					$preview.find( '.item-min-price' ).toggleClass( 'wpforms-hidden', isUserDefined && minPrice <= 0 );
-					$preview.toggleClass( 'min-price-warning', ! isValidMinPrice );
-					$preview.find( '.fa-exclamation-triangle' ).toggleClass( 'wpforms-hidden', isValidMinPrice );
+					value === 'user' ?
+						$placeholderOption.removeClass( 'wpforms-hidden' ) :
+						$placeholderOption.addClass( 'wpforms-hidden' );
 				}
 			} );
 
@@ -2728,46 +2719,36 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			} );
 
 			// Real-time updates for Single Item field "Item Price" option.
-			$builder.on( 'input', '.wpforms-field-option-row-price input', function() {
-				const $this = $( this ),
-					value = $this.val(),
-					formatted = wpf.amountFormat( wpf.amountSanitize( value ) ),
-					id = $this.parent().data( 'field-id' ),
-					placeholder = $( '#wpforms-field-option-' + id + '-placeholder' ).val().trim(),
-					$preview = $( '#wpforms-field-' + id ),
-					newValue = value === '' && placeholder !== '' ? '' : formatted;
+			$builder.on( 'input', '.wpforms-field-option-row-price input', function( e ) {
 
-				$preview.find( '.primary-input' ).val( newValue );
-				$preview.find( '.price' ).text( wpf.amountFormatCurrency( value ) );
-			} );
+				const $this   = $( this ),
+					value     = $this.val(),
+					sanitized = wpf.amountSanitize( value ),
+					formatted = wpf.amountFormat( sanitized );
 
-			// Real-time updates for Single Item field "Minimum Price" option.
-			$builder.on( 'input', '.wpforms-field-option-row-min_price input', function() {
-				const $this = $( this ),
-					amount = $this.val(),
-					sanitized = wpf.amountSanitize( amount ),
-					isEmpty = sanitized <= 0,
-					isValid = sanitized >= $this.data( 'minimum-price' ),
-					$fieldOptionRow = $this.parent(),
-					$preview = $( '#wpforms-field-' + $fieldOptionRow.data( 'field-id' ) );
+				let singleItem;
 
-				$fieldOptionRow.find( '.wpforms-item-minimum-price-alert' ).toggleClass( 'wpforms-hidden', isValid );
-				$preview.find( '.item-min-price' ).toggleClass( 'wpforms-hidden', isEmpty );
-				$preview.toggleClass( 'min-price-warning', ! isValid );
-				$preview.find( '.fa-exclamation-triangle' ).toggleClass( 'wpforms-hidden', isValid );
-
-				if ( isEmpty ) {
-					return;
+				if ( wpforms_builder.currency_symbol_pos === 'right' ) {
+					singleItem = formatted + ' ' + wpforms_builder.currency_symbol;
+				} else {
+					singleItem = wpforms_builder.currency_symbol + ' ' + formatted;
 				}
 
-				$preview.find( '.min-price' ).text( wpf.amountFormatCurrency( amount ) );
+				const id        = $this.parent().data( 'field-id' ),
+					placeholder = $( '#wpforms-field-option-' + id + '-placeholder' ).val().trim(),
+					$preview    = $( '#wpforms-field-' + id ),
+					newValue    = value === '' && placeholder !== '' ? '' : formatted;
+
+				$preview.find( '.primary-input' ).val( newValue );
+				$preview.find( '.price' ).text( singleItem );
 			} );
 
 			// Real-time updates for payment CC icons
-			$builder.on( 'change', '.wpforms-field-option-credit-card .payment-icons input', function() {
+			$builder.on( 'change', '.wpforms-field-option-credit-card .payment-icons input', function( e ) {
+
 				const $this = $( this ),
-					card = $this.data( 'card' ),
-					id = $this.parent().data( 'field-id' );
+					card    = $this.data( 'card' ),
+					id      = $this.parent().data( 'field-id' );
 
 				$( '#wpforms-field-' + id ).find( 'img.icon-' + card ).toggleClass( 'card_hide' );
 			} );
@@ -3935,7 +3916,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 			$entryPreviewField.addClass( 'wpforms-field-not-draggable' );
 			$pageBreakField.addClass( 'wpforms-field-not-draggable wpforms-field-entry-preview-not-deleted' );
-			$pageBreakPrevToggleField.prop( 'checked', 'checked' ).trigger( 'change' );
+			$pageBreakPrevToggleField.attr( 'checked', 'checked' ).trigger( 'change' );
 			$pageBreakPrevToggle.addClass( 'wpforms-entry-preview-block' );
 			$( '#wpforms-add-fields-entry-preview' ).removeClass( 'wpforms-entry-preview-adding' );
 
@@ -4627,21 +4608,65 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		 *
 		 * Currently used for select, radio, and checkboxes field types.
 		 *
-		 * @param {string}        type  Field type.
-		 * @param {string|number} id    Field ID.
-		 * @param {number}        count Number of choices to show, -1 if not set.
+		 * @param {string} type      Field type.
+		 * @param {string|number} id Field ID.
 		 *
 		 * @since 1.0.0
 		 */
-		fieldChoiceUpdate: ( type, id, count = -1 ) => { // eslint-disable-line complexity, max-lines-per-function
+		fieldChoiceUpdate: function( type, id ) {
+
 			const isDynamicChoices = app.dropdownField.helpers.isDynamicChoices( id );
 
-			if ( app.replaceChoicesWithTemplate( type, id, isDynamicChoices ) ) {
+			// Radio, Checkbox, and Payment Multiple/Checkbox use _ template.
+			if ( 'radio' === type || 'checkbox' === type || 'payment-multiple' === type || 'payment-checkbox' === type ) {
+
+				const order = wpf.getChoicesOrder( id ),
+					tmpl    = wp.template( 'wpforms-field-preview-checkbox-radio-payment-multiple' );
+
+				let fieldSettings = wpf.getField( id ),
+					slicedChoices = {},
+					slicedOrder   = order.slice( 0, 20 ),
+					data          = {
+						settings: fieldSettings,
+						order   : slicedOrder,
+						type    : 'radio',
+					};
+
+				// If Icon Choices is on, get the valid color.
+				if ( fieldSettings.choices_icons ) {
+					// eslint-disable-next-line camelcase
+					data.settings.choices_icons_color = app.getValidColorPickerValue( $( '#wpforms-field-option-' + id + '-choices_icons_color' ) );
+				}
+
+				// Slice choices for preview.
+				slicedOrder.forEach( function( entry ) {
+					slicedChoices[ entry ] = fieldSettings.choices[ entry ];
+				} );
+
+				fieldSettings.choices = slicedChoices;
+
+				if ( 'checkbox' === type || 'payment-checkbox' === type ) {
+					data.type = 'checkbox';
+				}
+
+				if ( ! isDynamicChoices ) {
+					$( '#wpforms-field-' + id ).find( 'ul.primary-input' ).replaceWith( tmpl( data ) );
+				}
+
+				// Toggle limit choices alert message.
+				app.firstNChoicesAlert( id, order.length );
+
 				return;
 			}
 
-			if ( count === -1 ) {
-				count = app.settings.choicesLimitLong;
+			// Multiple payment choices are radio buttons.
+			if ( 'payment-multiple' === type ) {
+				type = 'radio';
+			}
+
+			// Checkbox payment choices are checkboxes.
+			if ( 'payment-checkbox' === type ) {
+				type = 'checkbox';
 			}
 
 			// Dropdown payment choices are selects.
@@ -4665,16 +4690,17 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			}
 
 			// Building an inner content for Primary field.
-			const $choicesList = $( '#wpforms-field-option-row-' + id + '-choices .choices-list' ),
-				$choicesToRender = $choicesList.find( 'li' ).slice( 0, count ),
-				hasDefaults = !! $choicesList.find( 'input.default:checked' ).length,
-				modernSelectChoices = [],
+			const $choicesList       = $( '#wpforms-field-option-row-' + id + '-choices .choices-list' ),
+				$choicesToRender     = $choicesList.find( 'li' ).slice( 0, 20 ),
+				hasDefaults          = !! $choicesList.find( 'input.default:checked' ).length,
+				modernSelectChoices  = [],
 				showPriceAfterLabels = $( '#wpforms-field-option-' + id + '-show_price_after_labels' ).prop( 'checked' ),
-				isModernSelect = app.dropdownField.helpers.isModernSelect( $primary );
+				isModernSelect       = app.dropdownField.helpers.isModernSelect( $primary );
 
-			$choicesToRender.get().forEach( function( item ) {// eslint-disable-line complexity
-				const $this = $( item ),
-					value = $this.find( 'input.value' ).val(),
+			$choicesToRender.each( function() {// eslint-disable-line complexity
+
+				const $this  = $( this ),
+					value    = $this.find( 'input.value' ).val(),
 					choiceID = $this.data( 'key' );
 
 				let label = wpf.sanitizeHTML( $this.find( 'input.label' ).val().trim(), wpforms_builder.allowed_label_html_tags ),
@@ -4737,62 +4763,6 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 					.find( placeholderClass )
 					.toggleClass( 'wpforms-hidden', hasDefaults );
 			}
-		},
-
-		/**
-		 * Generate Choice label. Used in field preview template.
-		 *
-		 * @since 1.8.6
-		 *
-		 * @param {string}  type             Field type.
-		 * @param {number}  id               Field ID.
-		 * @param {boolean} isDynamicChoices Whether the field has dynamic choices.
-		 *
-		 * @return {boolean} True if the template was used.
-		 */
-		replaceChoicesWithTemplate: ( type, id, isDynamicChoices ) => { // eslint-disable-line complexity
-			// Radio, Checkbox, and Payment Multiple/Checkbox use _ template.
-			if ( 'radio' !== type && 'checkbox' !== type && 'payment-multiple' !== type && 'payment-checkbox' !== type ) {
-				return false;
-			}
-
-			const order = wpf.getChoicesOrder( id ),
-				tmpl = wp.template( 'wpforms-field-preview-checkbox-radio-payment-multiple' );
-
-			const fieldSettings = wpf.getField( id ),
-				slicedChoices = {},
-				slicedOrder = order.slice( 0, app.settings.choicesLimit ),
-				data = {
-					settings: fieldSettings,
-					order   : slicedOrder,
-					type    : 'radio',
-				};
-
-			// If Icon Choices is on, get the valid color.
-			if ( fieldSettings.choices_icons ) {
-				// eslint-disable-next-line camelcase
-				data.settings.choices_icons_color = app.getValidColorPickerValue( $( '#wpforms-field-option-' + id + '-choices_icons_color' ) );
-			}
-
-			// Slice choices for preview.
-			slicedOrder.forEach( function( entry ) {
-				slicedChoices[ entry ] = fieldSettings.choices[ entry ];
-			} );
-
-			fieldSettings.choices = slicedChoices;
-
-			if ( 'checkbox' === type || 'payment-checkbox' === type ) {
-				data.type = 'checkbox';
-			}
-
-			if ( ! isDynamicChoices ) {
-				$( '#wpforms-field-' + id ).find( 'ul.primary-input' ).replaceWith( tmpl( data ) );
-			}
-
-			// Toggle limit choices alert message.
-			app.firstNChoicesAlert( id, order.length );
-
-			return true;
 		},
 
 		/**
@@ -4902,7 +4872,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			}
 			$list.attr( 'data-next-id', nextID ).append( newChoices );
 
-			app.fieldChoiceUpdate( type, fieldID, nextID );
+			app.fieldChoiceUpdate( type, fieldID );
 			$builder.trigger( 'wpformsFieldChoiceAdd' );
 			app.fieldChoiceBulkAddToggle( $container.find( '.toggle-bulk-add-display' ) );
 		},
@@ -5508,19 +5478,19 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		 * @param {number} fieldId Field ID.
 		 * @param {number} total   Total number of choices.
 		 */
-		firstNChoicesAlert: ( fieldId, total ) => {
-			const $field = $( '#wpforms-field-' + fieldId );
+		firstNChoicesAlert: function( fieldId, total ) {
+
+			var tmpl   = wp.template( 'wpforms-choices-limit-message' ),
+				data   = {
+					total: total,
+				},
+				limit  = 20,
+				$field = $( '#wpforms-field-' + fieldId );
 
 			// Don't show message for select fields.
 			if ( $field.hasClass( 'wpforms-field-select' ) ) {
 				return;
 			}
-
-			const tmpl = wp.template( 'wpforms-choices-limit-message' ),
-				data = {
-					total,
-				},
-				limit = app.settings.choicesLimit;
 
 			$field.find( '.wpforms-alert-dynamic' ).remove();
 
@@ -7266,35 +7236,40 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 				event.preventDefault();
 
-				const $this = $( this );
-				const $container = $this.parent();
+				var $this      = $( this ),
+					$container = $this.parent(),
+					mediaModal;
 
-				const mediaFrame = wpf.initMediaLibrary( {
-					title: wpforms_builder.upload_image_title,
-					extensions: wpforms_builder.upload_image_extensions,
-					extensionsError: wpforms_builder.upload_image_extensions_error,
-					buttonText: wpforms_builder.upload_image_button,
+				mediaModal = wp.media.frames.wpforms_media_frame = wp.media( {
+					className: 'media-frame wpforms-media-frame',
+					frame:     'select',
+					multiple:   false,
+					title:      wpforms_builder.upload_image_title,
+					library: {
+						type: 'image',
+					},
+					button: {
+						text: wpforms_builder.upload_image_button,
+					},
 				} );
 
-				mediaFrame.on( 'select', function() {
-					const mediaAttachment = mediaFrame.state().get( 'selection' ).first().toJSON();
-					const $preview = $container.find( '.preview' );
+				mediaModal.on( 'select', function() {
+
+					var mediaAttachment = mediaModal.state().get( 'selection' ).first().toJSON();
 
 					$container.find( '.source' ).val( mediaAttachment.url );
-					$preview.empty();
-					$preview.prepend( '<img src="' + mediaAttachment.url + '"><a href="#" title="' + wpforms_builder.upload_image_remove + '" class="wpforms-image-upload-remove"><i class="fa fa-trash-o"></i></a>' );
+					$container.find( '.preview'  ).empty();
+					$container.find( '.preview'  ).prepend( '<img src="' + mediaAttachment.url + '"><a href="#" title="' + wpforms_builder.upload_image_remove + '" class="wpforms-image-upload-remove"><i class="fa fa-trash-o"></i></a>' );
 
 					if ( $this.data( 'after-upload' ) === 'hide' ) {
 						$this.hide();
 					}
 
 					$builder.trigger( 'wpformsImageUploadAdd', [ $this, $container ] );
-				} ).on( 'close', function() {
-					mediaFrame.off( 'library:selection:add' );
 				} );
 
 				// Now that everything has been set, let's open up the frame.
-				mediaFrame.open();
+				mediaModal.open();
 			} );
 
 			// Remove and uploaded image.

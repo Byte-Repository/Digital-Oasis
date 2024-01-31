@@ -135,9 +135,6 @@ class Widget_Counter extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
-				'ai' => [
-					'active' => false,
-				],
 				'default' => '',
 				'placeholder' => 1,
 			]
@@ -151,9 +148,6 @@ class Widget_Counter extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
-				'ai' => [
-					'active' => false,
-				],
 				'default' => '',
 				'placeholder' => esc_html__( 'Plus', 'elementor' ),
 			]
@@ -162,7 +156,7 @@ class Widget_Counter extends Widget_Base {
 		$this->add_control(
 			'duration',
 			[
-				'label' => esc_html__( 'Animation Duration', 'elementor' ) . ' (ms)',
+				'label' => esc_html__( 'Animation Duration', 'elementor' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => 2000,
 				'min' => 100,
@@ -210,6 +204,15 @@ class Widget_Counter extends Widget_Base {
 				],
 				'default' => esc_html__( 'Cool Number', 'elementor' ),
 				'placeholder' => esc_html__( 'Cool Number', 'elementor' ),
+			]
+		);
+
+		$this->add_control(
+			'view',
+			[
+				'label' => esc_html__( 'View', 'elementor' ),
+				'type' => Controls_Manager::HIDDEN,
+				'default' => 'traditional',
 			]
 		);
 

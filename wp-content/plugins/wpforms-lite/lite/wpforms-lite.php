@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use WPForms\Admin\Builder\TemplatesCache;
 use WPForms\Lite\Integrations\LiteConnect\LiteConnect;
 use WPForms\Lite\Integrations\LiteConnect\Integration as LiteConnectIntegration;
 
@@ -502,7 +501,7 @@ class WPForms_Lite {
 					$settings->form_data,
 					esc_html__( 'Confirmation Page', 'wpforms-lite' ),
 					[
-						'class'       => 'wpforms-panel-field-confirmations-page-choicesjs',
+						'class'       => 'wpforms-panel-field-confirmations-page-choicesjs-unflippable',
 						'options'     => wpforms_builder_form_settings_confirmation_get_pages( $settings->form_data, $field_id ),
 						'input_class' => 'wpforms-panel-field-confirmations-page',
 						'parent'      => 'settings',
@@ -1434,11 +1433,6 @@ class WPForms_Lite {
 		// Restart the import flags for Lite Connect if needed.
 		if ( class_exists( LiteConnectIntegration::class ) ) {
 			LiteConnectIntegration::maybe_restart_import_flag();
-		}
-
-		// Wipe templates content cache.
-		if ( class_exists( TemplatesCache::class ) ) {
-			( new TemplatesCache() )->wipe_content_cache();
 		}
 	}
 }

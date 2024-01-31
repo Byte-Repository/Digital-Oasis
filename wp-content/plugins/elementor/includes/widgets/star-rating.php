@@ -268,18 +268,10 @@ class Widget_Star_Rating extends Widget_Base {
 			[
 				'label' => esc_html__( 'Gap', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
+						'min' => 0,
 						'max' => 50,
-					],
-					'em' => [
-						'min' => 0,
-						'max' => 5,
-					],
-					'rem' => [
-						'min' => 0,
-						'max' => 5,
 					],
 				],
 				'selectors' => [
@@ -304,18 +296,10 @@ class Widget_Star_Rating extends Widget_Base {
 			[
 				'label' => esc_html__( 'Size', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
+						'min' => 0,
 						'max' => 100,
-					],
-					'em' => [
-						'min' => 0,
-						'max' => 10,
-					],
-					'rem' => [
-						'min' => 0,
-						'max' => 10,
 					],
 				],
 				'selectors' => [
@@ -329,18 +313,10 @@ class Widget_Star_Rating extends Widget_Base {
 			[
 				'label' => esc_html__( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
+						'min' => 0,
 						'max' => 50,
-					],
-					'em' => [
-						'min' => 0,
-						'max' => 5,
-					],
-					'rem' => [
-						'min' => 0,
-						'max' => 5,
 					],
 				],
 				'selectors' => [

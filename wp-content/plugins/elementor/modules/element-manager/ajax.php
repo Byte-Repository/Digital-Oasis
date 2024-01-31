@@ -63,8 +63,6 @@ class Ajax {
 			$data['promotion_widgets'] = Api::get_promotion_widgets();
 		}
 
-		$data['additional_data'] = apply_filters( 'elementor/element_manager/admin_app_data/additional_data', [] );
-
 		wp_send_json_success( $data );
 	}
 
@@ -116,8 +114,6 @@ class Ajax {
 		}
 
 		Options::update_disabled_elements( $disabled_elements );
-
-		do_action( 'elementor/element_manager/save_disabled_elements' );
 
 		wp_send_json_success();
 	}

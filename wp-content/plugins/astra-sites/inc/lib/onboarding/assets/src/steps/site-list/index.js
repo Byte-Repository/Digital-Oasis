@@ -109,12 +109,6 @@ const SiteList = () => {
 
 	const siteCount = Object.keys( siteData.sites ).length;
 
-	const fseBackStep = () => {
-		dispatch( {
-			type: 'set',
-			currentIndex: 0,
-		} );
-	};
 	return (
 		<DefaultStep
 			content={
@@ -250,14 +244,7 @@ const SiteList = () => {
 			}
 			actions={
 				<>
-					<PreviousStepLink
-						before
-						onClick={
-							astraSitesVars.default_page_builder === 'fse'
-								? fseBackStep
-								: () => {}
-						}
-					>
+					<PreviousStepLink before>
 						{ __( 'Back', 'astra-sites' ) }
 					</PreviousStepLink>
 

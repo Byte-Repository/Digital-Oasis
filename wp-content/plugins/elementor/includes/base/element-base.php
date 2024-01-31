@@ -822,7 +822,7 @@ abstract class Element_Base extends Controls_Stack {
 			$this->add_responsive_control(
 				"_transform_rotateZ_effect{$tab}",
 				[
-					'label' => esc_html__( 'Rotate', 'elementor' ) . ' (deg)',
+					'label' => esc_html__( 'Rotate', 'elementor' ),
 					'type' => Controls_Manager::SLIDER,
 					'device_args' => $default_unit_values_deg,
 					'range' => [
@@ -860,7 +860,7 @@ abstract class Element_Base extends Controls_Stack {
 			$this->add_responsive_control(
 				"_transform_rotateX_effect{$tab}",
 				[
-					'label' => esc_html__( 'Rotate X', 'elementor' ) . ' (deg)',
+					'label' => esc_html__( 'Rotate X', 'elementor' ),
 					'type' => Controls_Manager::SLIDER,
 					'device_args' => $default_unit_values_deg,
 					'range' => [
@@ -883,7 +883,7 @@ abstract class Element_Base extends Controls_Stack {
 			$this->add_responsive_control(
 				"_transform_rotateY_effect{$tab}",
 				[
-					'label' => esc_html__( 'Rotate Y', 'elementor' ) . ' (deg)',
+					'label' => esc_html__( 'Rotate Y', 'elementor' ),
 					'type' => Controls_Manager::SLIDER,
 					'device_args' => $default_unit_values_deg,
 					'range' => [
@@ -906,10 +906,11 @@ abstract class Element_Base extends Controls_Stack {
 			$this->add_responsive_control(
 				"_transform_perspective_effect{$tab}",
 				[
-					'label' => esc_html__( 'Perspective', 'elementor' ) . ' (px)',
+					'label' => esc_html__( 'Perspective', 'elementor' ),
 					'type' => Controls_Manager::SLIDER,
 					'range' => [
 						'px' => [
+							'min' => 0,
 							'max' => 1000,
 						],
 					],
@@ -1022,6 +1023,7 @@ abstract class Element_Base extends Controls_Stack {
 					'type' => Controls_Manager::SLIDER,
 					'range' => [
 						'px' => [
+							'min' => 0,
 							'max' => 2,
 							'step' => 0.1,
 						],
@@ -1044,6 +1046,7 @@ abstract class Element_Base extends Controls_Stack {
 					'type' => Controls_Manager::SLIDER,
 					'range' => [
 						'px' => [
+							'min' => 0,
 							'max' => 2,
 							'step' => 0.1,
 						],
@@ -1066,6 +1069,7 @@ abstract class Element_Base extends Controls_Stack {
 					'type' => Controls_Manager::SLIDER,
 					'range' => [
 						'px' => [
+							'min' => 0,
 							'max' => 2,
 							'step' => 0.1,
 						],
@@ -1098,7 +1102,7 @@ abstract class Element_Base extends Controls_Stack {
 			$this->add_responsive_control(
 				"_transform_skewX_effect{$tab}",
 				[
-					'label' => esc_html__( 'Skew X', 'elementor' ) . ' (deg)',
+					'label' => esc_html__( 'Skew X', 'elementor' ),
 					'type' => Controls_Manager::SLIDER,
 					'device_args' => $default_unit_values_deg,
 					'range' => [
@@ -1120,7 +1124,7 @@ abstract class Element_Base extends Controls_Stack {
 			$this->add_responsive_control(
 				"_transform_skewY_effect{$tab}",
 				[
-					'label' => esc_html__( 'Skew Y', 'elementor' ) . ' (deg)',
+					'label' => esc_html__( 'Skew Y', 'elementor' ),
 					'type' => Controls_Manager::SLIDER,
 					'device_args' => $default_unit_values_deg,
 					'range' => [
@@ -1188,9 +1192,8 @@ abstract class Element_Base extends Controls_Stack {
 						'device_args' => $default_unit_values_ms,
 						'range' => [
 							'px' => [
-								'min' => 0,
+								'min' => 100,
 								'max' => 10000,
-								'step' => 100,
 							],
 						],
 						'selectors' => [

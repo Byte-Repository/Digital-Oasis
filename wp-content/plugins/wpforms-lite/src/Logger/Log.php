@@ -100,12 +100,11 @@ class Log {
 			'conditional_logic' => esc_html__( 'Conditional Logic', 'wpforms-lite' ),
 			'entry'             => esc_html__( 'Entries', 'wpforms-lite' ),
 			'error'             => esc_html__( 'Errors', 'wpforms-lite' ),
-			'log'               => esc_html__( 'Log', 'wpforms-lite' ),
 			'payment'           => esc_html__( 'Payment', 'wpforms-lite' ),
 			'provider'          => esc_html__( 'Providers', 'wpforms-lite' ),
 			'security'          => esc_html__( 'Security', 'wpforms-lite' ),
 			'spam'              => esc_html__( 'Spam', 'wpforms-lite' ),
-			'translation'       => esc_html__( 'Translation', 'wpforms-lite' ),
+			'log'               => esc_html__( 'Log', 'wpforms-lite' ),
 		];
 	}
 

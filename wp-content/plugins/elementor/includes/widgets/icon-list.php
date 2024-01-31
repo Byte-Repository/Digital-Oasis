@@ -446,7 +446,7 @@ class Widget_Icon_List extends Widget_Base {
 		$this->add_control(
 			'icon_color_hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'elementor' ),
+				'label' => __( 'Transition Duration', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 's', 'ms', 'custom' ],
 				'default' => [
@@ -588,6 +588,7 @@ class Widget_Icon_List extends Widget_Base {
 					'em' => [
 						'min' => -1,
 						'max' => 1,
+						'step' => 0.1,
 					],
 				],
 				'selectors' => [
@@ -673,7 +674,7 @@ class Widget_Icon_List extends Widget_Base {
 		$this->add_control(
 			'text_color_hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'elementor' ),
+				'label' => __( 'Transition Duration', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 's', 'ms', 'custom' ],
 				'default' => [

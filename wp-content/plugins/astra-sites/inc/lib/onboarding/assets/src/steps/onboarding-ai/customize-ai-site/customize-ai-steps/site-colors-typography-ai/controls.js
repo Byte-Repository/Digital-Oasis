@@ -8,7 +8,10 @@ import {
 	getColorScheme,
 } from '../../../../../utils/functions';
 import ICONS from '../../../../../../icons';
-import { DARK_PALETTES, LIGHT_PALETTES } from './colors';
+import {
+	DARK_PALETTES,
+	LIGHT_PALETTES,
+} from '../../../../customize-site/customize-steps/site-colors-typography/colors';
 import TypographyWrapper from './typography';
 
 const SiteColorsControls = () => {

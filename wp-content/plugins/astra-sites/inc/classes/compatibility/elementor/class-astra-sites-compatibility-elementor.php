@@ -109,7 +109,6 @@ if ( ! class_exists( 'Astra_Sites_Compatibility_Elementor' ) ) :
 			);
 		}
 
-
 		/**
 		 * Force Delete Elementor Kit
 		 *

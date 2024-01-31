@@ -68,7 +68,7 @@ class Transaction extends \WPForms\Vendor\Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Tax\TransactionLineItem> list of transaction line items
+     * @return \Stripe\Collection<\Stripe\Tax\TransactionLineItem> list of TaxProductResourceTaxTransactionLineItems
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {

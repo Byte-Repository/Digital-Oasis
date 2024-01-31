@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import Lottie from 'react-lottie-player';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { CircularProgressBar } from '@tomickigrzegorz/react-circular-progress-bar';
 import { __, sprintf } from '@wordpress/i18n';
 // import PreviousStepLink from '../../components/util/previous-step-link/index';
@@ -26,7 +27,7 @@ const { reportError } = starterTemplates;
 let sendReportFlag = reportError;
 const successMessageDelay = 8000; // 8 seconds delay for fully assets load.
 import { STORE_KEY } from '../../steps/onboarding-ai/store';
-import ErrorModel from './error-model';
+
 import '../import-site/style.scss';
 
 const { imageDir } = starterTemplates;
@@ -67,7 +68,6 @@ const ImportAiSite = ( { onClickNext } ) => {
 			templateId,
 			builder,
 			pluginInstallationAttempts,
-			importErrorMessages,
 		},
 		dispatch,
 	] = storedState;
@@ -226,10 +226,6 @@ const ImportAiSite = ( { onClickNext } ) => {
 	const installRequiredPlugins = () => {
 		// Install Bulk.
 		if ( notInstalledList.length <= 0 ) {
-			dispatch( {
-				type: 'set',
-				requiredPluginsDone: true,
-			} );
 			return;
 		}
 
@@ -1530,12 +1526,7 @@ const ImportAiSite = ( { onClickNext } ) => {
 	 */
 	useEffect( () => {
 		if ( tryAgainCount > 0 ) {
-			dispatch( {
-				type: 'set',
-				importPercent: 0,
-				importStatus: __( 'Retrying Import.', 'astra-sites' ),
-			} );
-			handleImport();
+			checkRequiredPlugins( storedState );
 		}
 	}, [ tryAgainCount ] );
 
@@ -1618,28 +1609,6 @@ const ImportAiSite = ( { onClickNext } ) => {
 		sendReportFlag = false;
 	};
 
-	const tryAainCallback = () => {
-		dispatch( {
-			type: 'set',
-			// Reset errors.
-			importErrorMessages: {},
-			importErrorResponse: [],
-			importError: false,
-			// Try again count.
-			tryAgainCount: tryAgainCount + 1,
-			// Reset import flags.
-			xmlImportDone: false,
-			resetData: [],
-			importStart: false,
-			importEnd: false,
-			importPercent: 0,
-			requiredPluginsDone: false,
-			themeStatus: false,
-			notInstalledList: [],
-			notActivatedList: [],
-		} );
-	};
-
 	/**
 	 * Start the pre import process.
 	 * 		1. Install Astra Theme
@@ -1672,7 +1641,7 @@ const ImportAiSite = ( { onClickNext } ) => {
 		if ( themeStatus ) {
 			installRequiredPlugins();
 		}
-	}, [ themeStatus, tryAgainCount ] );
+	}, [ themeStatus ] );
 
 	/**
 	 * Start Part 2 of the import once the XML is imported sucessfully.
@@ -1691,7 +1660,7 @@ const ImportAiSite = ( { onClickNext } ) => {
 				requiredPluginsDone: true,
 			} );
 		}
-	}, [ notActivatedList.length, notInstalledList.length, tryAgainCount ] );
+	}, [ notActivatedList.length, notInstalledList.length ] );
 
 	// Whenever a plugin is installed, this code sends an activation request.
 	useEffect( () => {
@@ -1701,6 +1670,59 @@ const ImportAiSite = ( { onClickNext } ) => {
 		}
 	}, [ notActivatedList.length ] );
 
+	// return (
+	// 	<DefaultStep
+	// 		content={
+	// 			<div className="middle-content middle-content-import">
+	// 				<>
+	// 					{ importPercent === 100 ? (
+	// 						<h1 className="import-done-congrats">
+	// 							{ __( 'Congratulations', 'astra-sites' ) }
+	// 							<span>{ ICONS.tada }</span>
+	// 						</h1>
+	// 					) : (
+	// 						<h1>
+	// 							{ __(
+	// 								'We are building your website…',
+	// 								'astra-sites'
+	// 							) }
+	// 						</h1>
+	// 					) }
+	// 					{ importError && (
+	// 						<div className="ist-import-process-step-wrap">
+	// 							<ErrorScreen />
+	// 						</div>
+	// 					) }
+	// 					{ ! importError && (
+	// 						<>
+	// 							<div className="ist-import-process-step-wrap">
+	// 								<ImportLoader />
+	// 							</div>
+	// 							{ importPercent !== 100 && (
+	// 								<Lottie
+	// 									loop
+	// 									animationData={ lottieJson }
+	// 									play
+	// 									style={ {
+	// 										height: 400,
+	// 										margin: '-70px auto -90px auto',
+	// 									} }
+	// 								/>
+	// 							) }
+	// 						</>
+	// 					) }
+	// 				</>
+	// 			</div>
+	// 		}
+	// 		actions={
+	// 			<>
+	// 				<PreviousStepLink before disabled customizeStep={ true }>
+	// 					{ __( 'Back', 'astra-sites' ) }
+	// 				</PreviousStepLink>
+	// 			</>
+	// 		}
+	// 	/>
+	// );
 	return (
 		<>
 			<div className="flex flex-col items-center justify-center w-full h-screen gap-y-4">
@@ -1721,48 +1743,29 @@ const ImportAiSite = ( { onClickNext } ) => {
 						/>
 					) }
 					{ importError && (
-						<ErrorModel
-						error={ importErrorMessages }
-						websiteInfo={ websiteInfo }
-						tryAgainCallback={ tryAainCallback }
-					/>
+						<ExclamationTriangleIcon className="w-16 h-16 mt-2 cursor-pointer text-alert-error" />
 					) }
 					<div className="flex flex-col">
-						{ ! importEnd && ! importError && (
+						{ ! importEnd && (
 							<h4>
-								{ __(
-									'We are importing your website…',
-									'astra-sites'
-								) }
+								{ importError
+									? 'Something went wrong'
+									: 'We are importing your website...' }
 							</h4>
 						) }
-						{ ! importError && (
-							<p className="zw-sm-normal text-app-text w-[300px]">
-								<ImportLoaderAi onClickNext={ onClickNext } />
-							</p>
-						) }
+						<p className="zw-sm-normal text-app-text w-[300px]">
+							<ImportLoaderAi onClickNext={ onClickNext } />
+						</p>
 					</div>
 				</div>
 				{ ! importError && (
-					<>
-						<div className="relative flex items-center justify-center px-10 py-6 h-120 w-120 bg-loading-website-grid-texture">
-							<img
-								className="w-[30rem] h-[20.875rem]"
-								src={ `${ imageDir }/build-with-ai/migrate.svg` }
-								alt={ __( 'Migrating', 'astra-sites' ) }
-							/>
-						</div>
-						<div className="mt-3">
-							<p className="m-0 !text-sm !font-normal !text-zip-body-text">
-								The website preview was generated on{ ' ' }
-								{ websiteInfo?.url }
-							</p>
-							<p className="m-0 !text-sm !font-normal !text-zip-body-text">
-								{ `We're migrating it to your hosting at ` }
-								{ starterTemplates.siteUrl }
-							</p>
-						</div>
-					</>
+					<div className="relative flex items-center justify-center px-10 py-6 h-120 w-120 bg-loading-website-grid-texture">
+						<img
+							className="w-[30rem] h-[20.875rem]"
+							src={ `${ imageDir }/build-with-ai/migrate.svg` }
+							alt={ __( 'Migrating', 'astra-sites' ) }
+						/>
+					</div>
 				) }
 			</div>
 		</>

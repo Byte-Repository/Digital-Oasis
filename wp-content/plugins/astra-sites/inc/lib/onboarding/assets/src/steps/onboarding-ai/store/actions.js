@@ -311,12 +311,6 @@ const actions = {
 			payload: limitExceedModal,
 		};
 	},
-	setContinueProgressModal( continueProgressModal ) {
-		return {
-			type: actionsTypes.SET_CONTINUE_PROGRESS_MODAL,
-			payload: continueProgressModal,
-		};
-	},
 
 	setWebsiteTypeAIStep( websiteType ) {
 		return {

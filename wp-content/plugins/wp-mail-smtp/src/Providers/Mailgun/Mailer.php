@@ -224,7 +224,7 @@ class Mailer extends MailerAbstract {
 
 		$this->set_body_param(
 			array(
-				'h:' . $name => $this->sanitize_header_value( $name, $value ),
+				'h:' . $name => WP::sanitize_value( $value ),
 			)
 		);
 	}

@@ -474,7 +474,6 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 		);
 
 			foreach ( $choices as $key => $choice ) {
-				$label = $this->get_choices_label( $choice['label']['text'] ?? '', $key );
 
 				if ( wpforms_is_amp() && ( $using_image_choices || $using_icon_choices ) ) {
 					$choice['container']['attr']['[class]'] = sprintf(
@@ -530,8 +529,8 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 								printf(
 									'<img src="%s" alt="%s"%s>',
 									esc_url( $choice['image'] ),
-									esc_attr( $label ),
-									! empty( $label ) ? ' title="' . esc_attr( $label ) . '"' : ''
+									esc_attr( $choice['label']['text'] ),
+									! empty( $choice['label']['text'] ) ? ' title="' . esc_attr( $choice['label']['text'] ) . '"' : ''
 								);
 							}
 
@@ -558,7 +557,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 								checked( '1', $choice['default'], false )
 							);
 
-							echo '<span class="wpforms-image-choices-label">' . wp_kses_post( $label ) . '</span>';
+							echo '<span class="wpforms-image-choices-label">' . wp_kses_post( $choice['label']['text'] ) . '</span>';
 
 						echo '</label>';
 
@@ -591,7 +590,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 						printf(
 							'<label %s>%s%s</label>',
 							wpforms_html_attributes( $choice['label']['id'], $choice['label']['class'], $choice['label']['data'], $choice['label']['attr'] ),
-							wp_kses_post( $label ),
+							wp_kses_post( $choice['label']['text'] ),
 							wp_kses(
 								$required,
 								[
@@ -652,7 +651,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 		}
 
 		if ( ! empty( $error ) ) {
-			wpforms()->get( 'process' )->errors[ $form_data['id'] ][ $field_id ] = $error;
+			wpforms()->process->errors[ $form_data['id'] ][ $field_id ] = $error;
 		}
 	}
 
@@ -774,7 +773,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 		}
 
 		// Push field details to be saved.
-		wpforms()->get( 'process' )->fields[ $field_id ] = $data;
+		wpforms()->process->fields[ $field_id ] = $data;
 	}
 }
 

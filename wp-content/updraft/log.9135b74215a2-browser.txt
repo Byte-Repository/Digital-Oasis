@@ -1,0 +1,43 @@
+0000.035 (R) [notice] Looking for mu-plugins archive: file name: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip
+0000.036 (R) [notice] Archive is expected to be size: 1.8 KB: OK
+0000.041 (R) [notice] Looking for plugins archive: file name: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip
+0000.042 (R) [notice] Archive is expected to be size: 37531.1 KB: OK
+0000.045 (R) [notice] Looking for themes archive: file name: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip
+0000.046 (R) [notice] Archive is expected to be size: 5757.8 KB: OK
+0000.050 (R) [notice] Looking for uploads archive: file name: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip
+0000.051 (R) [notice] Archive is expected to be size: 40605.6 KB: OK
+0000.054 (R) [notice] Looking for others archive: file name: backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip
+0000.055 (R) [notice] Archive is expected to be size: 2.1 KB: OK
+0000.058 (R) [notice] Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.061 (R) [notice] Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip, 0 MB)
+0000.070 (R) [notice] Unzip progress: 2 out of 2 files (3.9 KB, mu-plugins/elementor-safe-mode.php)
+0000.071 (R) [notice] Moving old data out of the way...
+0000.072 (R) [notice] Moving unpacked backup into place...
+0000.074 (R) [notice] Cleaning up rubbish...
+0000.079 (R) [notice] Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip, 36.7 MB)
+0001.443 (R) [notice] Unzip progress: 1308 out of 7771 files (188 B, plugins/astra-sites/.eslintignore)
+0002.249 (R) [notice] Unzip progress: 2309 out of 7771 files (63.1 MB, plugins/elementor/assets/lib/imagesloaded/imagesloaded.js)
+0003.065 (R) [notice] Unzip progress: 3310 out of 7771 files (71 MB, plugins/simply-static/vendor/voku/portable-ascii/src/voku/helper/data/x0b3.php)
+0003.839 (R) [notice] Unzip progress: 4311 out of 7771 files (94.7 MB, plugins/updraftplus/vendor/phpseclib/phpseclib/phpseclib/Crypt/Twofish.php)
+0004.627 (R) [notice] Unzip progress: 5312 out of 7771 files (102.2 MB, plugins/wp-mail-smtp/vendor_prefixed/monolog/monolog/src/Monolog/Handler/LogEntriesHandler.php)
+0005.477 (R) [notice] Unzip progress: 6313 out of 7771 files (113.2 MB, plugins/wpforms-lite/assets/css/builder/builder-third-party.min.css)
+0006.260 (R) [notice] Unzip progress: 7314 out of 7771 files (130.2 MB, plugins/wpforms-lite/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-11.php)
+0006.628 (R) [notice] Unzip progress: 7771 out of 7771 files (132.1 MB, plugins/wpforms-lite/vendor_prefixed/true/punycode/src/Punycode.php)
+0006.633 (R) [notice] Moving old data out of the way...
+0010.109 (R) [notice] Moving unpacked backup into place...
+0012.101 (R) [notice] Cleaning up rubbish...
+0012.108 (R) [notice] Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip, 5.6 MB)
+0012.899 (R) [notice] Unzip progress: 1002 out of 1041 files (18.2 MB, themes/astra/inc/theme-update/astra-update-functions.php)
+0012.931 (R) [notice] Unzip progress: 1041 out of 1041 files (18.6 MB, themes/index.php)
+0012.933 (R) [notice] Moving old data out of the way...
+0013.224 (R) [notice] Moving unpacked backup into place...
+0013.538 (R) [notice] Cleaning up rubbish...
+0013.562 (R) [notice] Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip, 39.7 MB)
+0014.441 (R) [notice] Unzip progress: 692 out of 692 files (68.3 MB, uploads/wpo/images/wpo_logo_small.png.webp)
+0014.445 (R) [notice] Moving old data out of the way...
+0014.670 (R) [notice] Moving unpacked backup into place...
+0014.904 (R) [notice] Cleaning up rubbish...
+0014.941 (R) [notice] Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip, 0 MB)
+0014.978 (R) [notice] Unzip progress: 6 out of 6 files (3.6 KB, wpo-cache/config/config-localhost.php)
+0014.996 (R) [notice] Cleaning up rubbish...
+0015.146 (R) [notice] Restore successful!

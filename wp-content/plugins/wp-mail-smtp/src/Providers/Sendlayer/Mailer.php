@@ -81,7 +81,7 @@ class Mailer extends MailerAbstract {
 
 		$headers = isset( $this->body['Headers'] ) ? (array) $this->body['Headers'] : [];
 
-		$headers[ $name ] = $this->sanitize_header_value( $name, $value );
+		$headers[ $name ] = WP::sanitize_value( $value );
 
 		$this->set_body_param(
 			[

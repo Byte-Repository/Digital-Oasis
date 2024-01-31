@@ -1,0 +1,75 @@
+0000.008 () Opened log file at time: Wed, 31 Jan 2024 00:04:58 +0000 on http://localhost/portfolio
+0000.010 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.23.16 WP: 6.4.3 PHP: 8.2.12 (apache2handler, Windows NT PC-1 10.0 build 22621 (Windows 11) AMD64) MySQL: 10.4.32-MariaDB (max packet size=33554432) WPLANG: en_US Server: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 76.9M | 80M) multisite: N openssl: OpenSSL 3.0.11 19 Sep 2023 mcrypt: N LANG:  ZipArchive::addFile: N
+0000.010 () Free space on disk containing Updraft's temporary directory: 145094.9 MB
+0000.031 () Restore setup, now closing connection and starting restore over AJAX.
+0000.005 () Opened log file at time: Wed, 31 Jan 2024 00:04:59 +0000 on http://localhost/portfolio
+0000.006 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.23.16 WP: 6.4.3 PHP: 8.2.12 (apache2handler, Windows NT PC-1 10.0 build 22621 (Windows 11) AMD64) MySQL: 10.4.32-MariaDB (max packet size=33554432) WPLANG: en_US Server: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 73.8M | 78M) multisite: N openssl: OpenSSL 3.0.11 19 Sep 2023 mcrypt: N LANG:  ZipArchive::addFile: N
+0000.006 () Free space on disk containing Updraft's temporary directory: 145094.6 MB
+0000.018 () Ensuring WP_Filesystem is setup for a restore
+0000.020 () WP_Filesystem is setup and ready for a restore
+0000.034 () Restore job started. Entities to restore: plugins, themes, uploads, mu-plugins, others. Restore options: {"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.039 () PHP event: code E_WARNING: mkdir(): File exists (line 558, C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio\wp-admin\includes\class-wp-filesystem-direct.php)
+0000.058 () Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.060 () Entity: mu-plugins
+0000.060 () restore_backup(backup_file=backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip, type=mu-plugins, info=a:2:{s:4:"path";s:76:"C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/mu-plugins";s:11:"description";s:16:"Must-use plugins";}, last_one=)
+0000.061 () Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip, 0 MB)
+0000.065 () Unzipping backup_2024-01-30-2144_Portfolio_1716aabb8b0a-mu-plugins.zip to C:/Users/Admin/Desktop/Personal/Xampp/htdocs/portfolio/wp-content/upgrade/ce790866/ using UpdraftPlus_PclZip, starting index 0
+0000.070 () Unzip progress: 2 out of 2 files (3.9 KB, mu-plugins/elementor-safe-mode.php)
+0000.071 () Moving old data: filesystem method / updraft_dir is potentially possible
+0000.071 () Moving old data: can potentially use wp_filesystem method / -old
+0000.071 () Moving old data out of the way...
+0000.072 () Moving unpacked backup into place...
+0000.073 () Destination directory did not exist, but was successfully created (C:/Users/Admin/Desktop/Personal/Xampp/htdocs/portfolio/wp-content/mu-plugins/)
+0000.074 () Cleaning up rubbish...
+0000.078 () Entity: plugins
+0000.078 () restore_backup(backup_file=backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip, type=plugins, info=a:3:{s:4:"path";s:73:"C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/plugins";s:11:"description";s:7:"Plugins";s:20:"singular_description";s:6:"Plugin";}, last_one=)
+0000.079 () Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip, 36.7 MB)
+0000.080 () Unzipping backup_2024-01-30-2144_Portfolio_1716aabb8b0a-plugins.zip to C:/Users/Admin/Desktop/Personal/Xampp/htdocs/portfolio/wp-content/upgrade/16cd1f0d/ using UpdraftPlus_PclZip, starting index 0
+0001.443 () Unzip progress: 1308 out of 7771 files (188 B, plugins/astra-sites/.eslintignore)
+0002.249 () Unzip progress: 2309 out of 7771 files (63.1 MB, plugins/elementor/assets/lib/imagesloaded/imagesloaded.js)
+0003.065 () Unzip progress: 3310 out of 7771 files (71 MB, plugins/simply-static/vendor/voku/portable-ascii/src/voku/helper/data/x0b3.php)
+0003.839 () Unzip progress: 4311 out of 7771 files (94.7 MB, plugins/updraftplus/vendor/phpseclib/phpseclib/phpseclib/Crypt/Twofish.php)
+0004.627 () Unzip progress: 5312 out of 7771 files (102.2 MB, plugins/wp-mail-smtp/vendor_prefixed/monolog/monolog/src/Monolog/Handler/LogEntriesHandler.php)
+0005.477 () Unzip progress: 6313 out of 7771 files (113.2 MB, plugins/wpforms-lite/assets/css/builder/builder-third-party.min.css)
+0006.260 () Unzip progress: 7314 out of 7771 files (130.2 MB, plugins/wpforms-lite/vendor/symfony/polyfill-iconv/Resources/charset/from.iso-8859-11.php)
+0006.628 () Unzip progress: 7771 out of 7771 files (132.1 MB, plugins/wpforms-lite/vendor_prefixed/true/punycode/src/Punycode.php)
+0006.633 () Moving old data: filesystem method / updraft_dir is potentially possible
+0006.633 () Moving old data: can potentially use wp_filesystem method / -old
+0006.633 () Moving old data out of the way...
+0010.071 () Top-level entities being moved: astra-sites, elementor, index.php, simply-static, updraftplus, wp-mail-smtp, wp-optimize, wpforms-lite
+0010.109 () Moving unpacked backup into place...
+0012.064 () Top-level entities being moved: astra-sites, elementor, index.php, simply-static, updraftplus, wp-mail-smtp, wp-optimize, wpforms-lite
+0012.101 () Cleaning up rubbish...
+0012.106 () Entity: themes
+0012.106 () restore_backup(backup_file=backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip, type=themes, info=a:3:{s:4:"path";s:72:"C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/themes";s:11:"description";s:6:"Themes";s:20:"singular_description";s:5:"Theme";}, last_one=)
+0012.108 () Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip, 5.6 MB)
+0012.109 () Unzipping backup_2024-01-30-2144_Portfolio_1716aabb8b0a-themes.zip to C:/Users/Admin/Desktop/Personal/Xampp/htdocs/portfolio/wp-content/upgrade/ad593d65/ using UpdraftPlus_PclZip, starting index 0
+0012.899 () Unzip progress: 1002 out of 1041 files (18.2 MB, themes/astra/inc/theme-update/astra-update-functions.php)
+0012.931 () Unzip progress: 1041 out of 1041 files (18.6 MB, themes/index.php)
+0012.932 () Moving old data: filesystem method / updraft_dir is potentially possible
+0012.933 () Moving old data: can potentially use wp_filesystem method / -old
+0012.933 () Moving old data out of the way...
+0013.217 () Top-level entities being moved: astra, index.php
+0013.224 () Moving unpacked backup into place...
+0013.530 () Top-level entities being moved: astra, index.php
+0013.538 () Cleaning up rubbish...
+0013.562 () Entity: uploads
+0013.562 () restore_backup(backup_file=backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip, type=uploads, info=a:2:{s:4:"path";s:73:"C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0013.562 () Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip, 39.7 MB)
+0013.564 () Unzipping backup_2024-01-30-2144_Portfolio_1716aabb8b0a-uploads.zip to C:/Users/Admin/Desktop/Personal/Xampp/htdocs/portfolio/wp-content/upgrade/3c6609d8/ using UpdraftPlus_PclZip, starting index 0
+0014.441 () Unzip progress: 692 out of 692 files (68.3 MB, uploads/wpo/images/wpo_logo_small.png.webp)
+0014.445 () Moving old data: filesystem method / updraft_dir is potentially possible
+0014.445 () Moving old data: can potentially use wp_filesystem method / -old
+0014.445 () Moving old data out of the way...
+0014.670 () Moving unpacked backup into place...
+0014.904 () Cleaning up rubbish...
+0014.940 () Entity: others
+0014.940 () restore_backup(backup_file=backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip, type=others, info=a:2:{s:4:"path";s:65:"C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content";s:11:"description";s:6:"Others";}, last_one=1)
+0014.941 () Unpacking backup... (backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip, 0 MB)
+0014.943 () Unzipping backup_2024-01-30-2144_Portfolio_1716aabb8b0a-others.zip to C:/Users/Admin/Desktop/Personal/Xampp/htdocs/portfolio/wp-content/upgrade/4061c93d/ using UpdraftPlus_PclZip, starting index 0
+0014.978 () Unzip progress: 6 out of 6 files (3.6 KB, wpo-cache/config/config-localhost.php)
+0014.996 () Cleaning up rubbish...
+0015.100 () Elementor's clear cache method exists and will be executed
+0015.126 () Purging cache directory: C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/cache
+0015.146 () Restore successful!
+0015.146 () Restore successful

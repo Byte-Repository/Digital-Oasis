@@ -15,7 +15,7 @@ function wpforms_visual_composer_shortcode() {
 		return;
 	}
 
-	$wpf = wpforms()->get( 'form' )->get(
+	$wpf = wpforms()->form->get(
 		'',
 		[
 			'orderby' => 'title',

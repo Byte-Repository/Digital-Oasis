@@ -4,7 +4,7 @@
     border-radius: var(--st-border-radius-4);
     width: 600px;
     padding: 35px;
-    margin: 0 auto 40px;
+    margin: 0 auto;
     text-align: left;
 
     input[type="checkbox"]:checked {
@@ -206,9 +206,12 @@
     }
 }
 
-.starter-templates-ai-steps p.subscription-agreement-text {
+.subscription-agreement-checkbox-label {
     display: block;
     font-size: var(--st-font-size-xs);
-    margin-top: 24px;
-    text-align: center;
+    margin-bottom: 20px;
+}
+
+input.subscription-agreement-checkbox {
+    margin-right: 10px;
 }

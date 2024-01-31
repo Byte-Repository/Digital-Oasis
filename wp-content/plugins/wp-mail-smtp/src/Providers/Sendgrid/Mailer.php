@@ -232,7 +232,7 @@ class Mailer extends MailerAbstract {
 
 		$headers = isset( $this->body['headers'] ) ? (array) $this->body['headers'] : array();
 
-		$headers[ $name ] = $this->sanitize_header_value( $name, $value );
+		$headers[ $name ] = WP::sanitize_value( $value );
 
 		$this->set_body_param(
 			array(

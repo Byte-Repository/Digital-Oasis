@@ -393,7 +393,6 @@ trait ContentTrait {
 			false
 		);
 
-		$content .= $this->get_customer_name_panel_field();
 		$content .= $this->single_payments_conditional_logic_section();
 
 		return $content;
@@ -467,7 +466,6 @@ trait ContentTrait {
 			false
 		);
 
-		$content .= $this->get_customer_name_panel_field( $plan_id );
 		$content .= $this->recurring_payments_conditional_logic_section( $plan_id );
 
 		return $content;
@@ -500,40 +498,6 @@ trait ContentTrait {
 			'<a href="%1$s" target="_blank" rel="noopener noreferrer" class="secondary-text">%2$s</a>',
 			esc_url( wpforms_utm_link( 'https://wpforms.com/docs/how-to-install-and-use-the-stripe-addon-with-wpforms/', 'builder-payments', 'Stripe Documentation' ) ),
 			esc_html__( 'Learn more about our Stripe integration.', 'wpforms-lite' )
-		);
-	}
-
-	/**
-	 * Get Customer name panel field.
-	 *
-	 * @since 1.8.6
-	 *
-	 * @param string|null $plan_id Plan ID.
-	 *
-	 * @return string
-	 */
-	private function get_customer_name_panel_field( $plan_id = null ) {
-
-		$args = [
-			'parent'      => 'payments',
-			'field_map'   => [ 'name' ],
-			'placeholder' => esc_html__( '--- Select Name ---', 'wpforms-lite' ),
-			'tooltip'     => esc_html__( 'Select the field that contains the customer\'s name. This is optional but recommended.', 'wpforms-lite' ),
-		];
-
-		if ( ! is_null( $plan_id ) ) {
-			$args['subsection'] = 'recurring';
-			$args['index']      = $plan_id;
-		}
-
-		return wpforms_panel_field(
-			'select',
-			$this->slug,
-			'customer_name',
-			$this->form_data,
-			esc_html__( 'Customer Name', 'wpforms-lite' ),
-			$args,
-			false
 		);
 	}
 }

@@ -64,7 +64,7 @@ class Account extends \WPForms\Vendor\Stripe\ApiResource
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of account owners
+     * @return \Stripe\Collection<\Stripe\FinancialConnections\AccountOwner> list of BankConnectionsResourceOwners
      */
     public static function allOwners($id, $params = null, $opts = null)
     {

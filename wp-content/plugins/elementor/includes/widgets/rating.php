@@ -47,20 +47,19 @@ class Widget_Rating extends Widget_Base {
 			[
 				'label' => esc_html__( 'Size', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
-					'px' => [
-						'max' => 100,
-					],
 					'em' => [
 						'min' => 0,
 						'max' => 10,
+						'step' => 0.1,
 					],
 					'rem' => [
 						'min' => 0,
 						'max' => 10,
+						'step' => 0.1,
 					],
 				],
+				'size_units' => [ 'px', 'em', 'rem', 'vw', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}}' => '--e-rating-icon-font-size: {{SIZE}}{{UNIT}}',
 				],
@@ -72,20 +71,19 @@ class Widget_Rating extends Widget_Base {
 			[
 				'label' => esc_html__( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
-					'px' => [
-						'max' => 100,
-					],
 					'em' => [
 						'min' => 0,
 						'max' => 10,
+						'step' => 0.1,
 					],
 					'rem' => [
 						'min' => 0,
 						'max' => 10,
+						'step' => 0.1,
 					],
 				],
+				'size_units' => [ 'px', 'em', 'rem', 'vw', 'custom' ],
 				'selectors' => [
 					'{{WRAPPER}}' => '--e-rating-gap: {{SIZE}}{{UNIT}}',
 				],
@@ -140,8 +138,9 @@ class Widget_Rating extends Widget_Base {
 						'max' => 10,
 					],
 				],
+				'step' => 1,
 				'default' => [
-					'size' => 5,
+					'size' => '5',
 				],
 			]
 		);

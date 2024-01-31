@@ -15,8 +15,7 @@ import Tile from './components/tile';
 import SuggestedKeywords from './components/suggested-keywords';
 import TagsInput from './components/tags-input';
 import Dropdown from './components/dropdown';
-import { useDebounce, useDebounceWithCancel } from './hooks/use-debounce';
-
+import { useDebounce } from './hooks/use-debounce';
 import { STORE_KEY } from './store';
 import NavigationButtons from './navigation-buttons';
 import Heading from './heading';
@@ -86,7 +85,7 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 			businessName,
 			selectedImages = [],
 			keywords = [],
-			// imagesPreSelected,
+			imagesPreSelected,
 			businessType,
 			businessDetails,
 			businessContact,
@@ -124,11 +123,9 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 	const scrollContainerRef = useRef( null );
 	const imageRequestCompleted = useRef( false );
 	const blackListedEngines = useRef( new Set() );
-	// const areImagesPreSelected = useRef( imagesPreSelected );
+	const areImagesPreSelected = useRef( imagesPreSelected );
 
-	const [ debouncedImageKeywords, cancelDebouncedImageKeywords ] =
-		useDebounceWithCancel( keyword, 500 );
-
+	const debouncedImageKeywords = useDebounce( keyword, 500 );
 	const debouncedOrientation = useDebounce( orientation, 500 );
 
 	console.log( { businessContact } );
@@ -138,7 +135,6 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 	};
 
 	const handleSelectKeyword = ( keyword_value ) => {
-		cancelDebouncedImageKeywords();
 		setKeyword( keyword_value );
 	};
 
@@ -274,9 +270,9 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 	};
 
 	const handlePreSelectImages = ( imgValues ) => {
-		// if ( !! areImagesPreSelected.current ) {
-		// 	return;
-		// }
+		if ( !! areImagesPreSelected.current ) {
+			return;
+		}
 
 		const allPreSelectedImages = imgValues
 			.filter(
@@ -298,14 +294,11 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 			return;
 		}
 		setWebsiteImagesPreSelectedAIStep( true );
-		// areImagesPreSelected.current = true;
-
-		return allPreSelectedImages;
+		areImagesPreSelected.current = true;
 	};
 
 	// Define a function to fetch all images
-	const fetchAllImages = async ( engine ) => {
-		// eslint-disable-line
+	const fetchAllImages = async ( engine ) => { // eslint-disable-line
 		let searchKeywords = keyword;
 
 		// If we the input filed is empty we are passing the keyword as businessName[category]
@@ -357,7 +350,7 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 					: [];
 
 			// Pre-select images for user.
-			// handlePreSelectImages( newImages ); // do not autoselect images
+			handlePreSelectImages( newImages );
 
 			// Combine with existing images
 			setImages( ( prevImages ) =>
@@ -473,7 +466,7 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 		? [ ...images, ...getImageSkeleton() ]
 		: images;
 
-	const handleSaveDetails = async ( selImages = selectedImages ) => {
+	const handleSaveDetails = async () => {
 		await apiFetch( {
 			path: 'zipwp/v1/user-details',
 			method: 'POST',
@@ -486,7 +479,7 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 				business_name: businessName,
 				business_category: businessType.id.toString(),
 				business_category_name: businessType.name.toString(),
-				images: selImages,
+				images: selectedImages,
 				keywords,
 				business_address: businessContact?.address || '',
 				business_phone: businessContact?.phone || '',
@@ -503,15 +496,7 @@ const Images = ( { onClickPrevious, onClickNext } ) => {
 	};
 
 	const handleClickNext = async () => {
-		let updatedSelectedImages = selectedImages;
-
-		// if user hasn't selected any images, pre-select images
-		if ( selectedImages.length < 1 ) {
-			updatedSelectedImages = await handlePreSelectImages( images );
-			setWebsiteImagesAIStep( updatedSelectedImages );
-		}
-
-		await handleSaveDetails( updatedSelectedImages );
+		await handleSaveDetails();
 		onClickNext();
 	};
 

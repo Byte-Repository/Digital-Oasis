@@ -163,9 +163,7 @@ class Widget_Text_Editor extends Widget_Base {
 					],
 					'em' => [
 						'max' => 10,
-					],
-					'rem' => [
-						'max' => 10,
+						'step' => 0.1,
 					],
 				],
 				'selectors' => [
@@ -317,19 +315,12 @@ class Widget_Text_Editor extends Widget_Base {
 			[
 				'label' => esc_html__( 'Size', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'default' => [
 					'size' => 5,
 				],
 				'range' => [
 					'px' => [
 						'max' => 30,
-					],
-					'em' => [
-						'max' => 3,
-					],
-					'rem' => [
-						'max' => 3,
 					],
 				],
 				'selectors' => [
@@ -346,19 +337,12 @@ class Widget_Text_Editor extends Widget_Base {
 			[
 				'label' => esc_html__( 'Space', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'default' => [
 					'size' => 10,
 				],
 				'range' => [
 					'px' => [
 						'max' => 50,
-					],
-					'em' => [
-						'max' => 5,
-					],
-					'rem' => [
-						'max' => 5,
 					],
 				],
 				'selectors' => [
@@ -425,7 +409,9 @@ class Widget_Text_Editor extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$should_render_inline_editing = Plugin::$instance->editor->is_edit_mode();
+		$is_dom_optimized = Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' );
+		$is_edit_mode = Plugin::$instance->editor->is_edit_mode();
+		$should_render_inline_editing = ( ! $is_dom_optimized || $is_edit_mode );
 
 		$editor_content = $this->get_settings_for_display( 'editor' );
 		$editor_content = $this->parse_text_editor( $editor_content );
@@ -471,7 +457,9 @@ class Widget_Text_Editor extends Widget_Base {
 	protected function content_template() {
 		?>
 		<#
-		const shouldRenderInlineEditing = elementorFrontend.isEditMode();
+		const isDomOptimized = ! ! elementorFrontend.config.experimentalFeatures.e_dom_optimization,
+			isEditMode = elementorFrontend.isEditMode(),
+			shouldRenderInlineEditing = ( ! isDomOptimized || isEditMode );
 
 		if ( shouldRenderInlineEditing ) {
 			view.addRenderAttribute( 'editor', 'class', [ 'elementor-text-editor', 'elementor-clearfix' ] );

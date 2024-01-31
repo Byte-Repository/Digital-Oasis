@@ -354,7 +354,7 @@ class WPForms_Admin_Menu {
 	 */
 	public function settings_link( $links, $plugin_file, $plugin_data, $context ) {
 
-		$custom['wpforms-pro'] = sprintf(
+		$custom['pro'] = sprintf(
 			'<a href="%1$s" aria-label="%2$s" target="_blank" rel="noopener noreferrer"
 				style="color: #00a32a; font-weight: 700;"
 				onmouseover="this.style.color=\'#008a20\';"
@@ -370,7 +370,7 @@ class WPForms_Admin_Menu {
 			esc_html__( 'Get WPForms Pro', 'wpforms-lite' )
 		);
 
-		$custom['wpforms-settings'] = sprintf(
+		$custom['settings'] = sprintf(
 			'<a href="%s" aria-label="%s">%s</a>',
 			esc_url(
 				add_query_arg(
@@ -382,7 +382,7 @@ class WPForms_Admin_Menu {
 			esc_html__( 'Settings', 'wpforms-lite' )
 		);
 
-		$custom['wpforms-docs'] = sprintf(
+		$custom['docs'] = sprintf(
 			'<a href="%1$s" aria-label="%2$s" target="_blank" rel="noopener noreferrer">%3$s</a>',
 			esc_url(
 				add_query_arg(

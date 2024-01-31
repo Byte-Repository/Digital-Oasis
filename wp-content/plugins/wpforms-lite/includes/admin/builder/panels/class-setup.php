@@ -22,11 +22,10 @@ class WPForms_Builder_Panel_Setup extends WPForms_Builder_Panel {
 	public function init() {
 
 		// Define panel information.
-		$this->name      = esc_html__( 'Setup', 'wpforms-lite' );
-		$this->slug      = 'setup';
-		$this->icon      = 'fa-cog';
-		$this->order     = 5;
-		$this->on_demand = true;
+		$this->name  = esc_html__( 'Setup', 'wpforms-lite' );
+		$this->slug  = 'setup';
+		$this->icon  = 'fa-cog';
+		$this->order = 5;
 
 		$this->addons_obj = wpforms()->get( 'addons' );
 	}

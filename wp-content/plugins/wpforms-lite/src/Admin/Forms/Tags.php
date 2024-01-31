@@ -4,6 +4,7 @@ namespace WPForms\Admin\Forms;
 
 use WP_Post;
 use WPForms_Form_Handler;
+use WPForms_Overview_Table;
 
 /**
  * Tags on All Forms page.
@@ -238,7 +239,7 @@ class Tags {
 	 */
 	private function is_tags_column_hidden() {
 
-		$overview_table = ListTable::get_instance();
+		$overview_table = WPForms_Overview_Table::get_instance();
 		$columns        = $overview_table->__call( 'get_column_info', [] );
 
 		return isset( $columns[1] ) && in_array( 'tags', $columns[1], true );
@@ -459,8 +460,8 @@ class Tags {
 	 *
 	 * @since 1.7.5
 	 *
-	 * @param string    $which          The location of the table navigation: 'top' or 'bottom'.
-	 * @param ListTable $overview_table Instance of the ListTable class.
+	 * @param string                 $which          The location of the table navigation: 'top' or 'bottom'.
+	 * @param WPForms_Overview_Table $overview_table Instance of the WPForms_Overview_Table class.
 	 */
 	public function extra_tablenav( $which, $overview_table ) {
 
@@ -521,7 +522,7 @@ class Tags {
 	 *
 	 * @since 1.7.5
 	 *
-	 * @param ListTable $list_table Overview list table object.
+	 * @param WPForms_Overview_Table $list_table Overview lit table object.
 	 */
 	public function bulk_edit_tags( $list_table ) {
 

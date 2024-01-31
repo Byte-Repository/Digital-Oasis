@@ -52,13 +52,24 @@ abstract class PageIntegrations implements PageIntegrationsInterface {
 	 */
 	public function display( $active, $settings ) {
 
-		$accounts = ! empty( $settings[ $this->core->slug ] ) ? $settings[ $this->core->slug ] : [];
-		$classes  = $this->get_provider_classes( $active, $settings );
-		$arrow    = in_array( 'focus-in', $classes, true ) ? 'down' : 'right';
+		$connected = ! empty( $active[ $this->core->slug ] );
+		$accounts  = ! empty( $settings[ $this->core->slug ] ) ? $settings[ $this->core->slug ] : [];
+		$class     = $connected && $accounts ? 'connected' : '';
+		$arrow     = 'right';
+
+		// This lets us highlight a specific service by a special link.
+		if ( ! empty( $_GET['wpforms-integration'] ) ) { //phpcs:ignore
+			if ( $this->core->slug === $_GET['wpforms-integration'] ) { //phpcs:ignore
+				$class .= ' focus-in';
+				$arrow  = 'down';
+			} else {
+				$class .= ' focus-out';
+			}
+		}
 		?>
 
 		<div id="wpforms-integration-<?php echo esc_attr( $this->core->slug ); ?>"
-			class="wpforms-settings-provider wpforms-clear <?php echo esc_attr( $this->core->slug ); ?> <?php echo wpforms_sanitize_classes( $classes, true ); ?>">
+			class="wpforms-settings-provider wpforms-clear <?php echo esc_attr( $this->core->slug ); ?> <?php echo esc_attr( $class ); ?>">
 
 			<div class="wpforms-settings-provider-header wpforms-clear" data-provider="<?php echo esc_attr( $this->core->slug ); ?>">
 
@@ -107,35 +118,6 @@ abstract class PageIntegrations implements PageIntegrationsInterface {
 		</div>
 
 		<?php
-	}
-
-	/**
-	 * Get provider classes.
-	 *
-	 * @since 1.8.6
-	 *
-	 * @param array $active   Array of activated providers addons.
-	 * @param array $settings Providers options.
-	 */
-	protected function get_provider_classes( $active, $settings ) {
-
-		$connected = ! empty( $active[ $this->core->slug ] );
-		$accounts  = ! empty( $settings[ $this->core->slug ] ) ? $settings[ $this->core->slug ] : [];
-		$classes   = [];
-
-		if ( $connected && $accounts ) {
-			$classes[] = 'connected';
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['wpforms-integration'] ) ) {
-			return $classes;
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$classes[] = $this->core->slug === $_GET['wpforms-integration'] ? 'focus-in' : 'focus-out';
-
-		return $classes;
 	}
 
 	/**

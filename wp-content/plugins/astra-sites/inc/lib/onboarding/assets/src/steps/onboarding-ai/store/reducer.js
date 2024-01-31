@@ -180,9 +180,6 @@ export const initialState = {
 		limitExceedModal: {
 			open: false,
 		},
-		continueProgressModal: {
-			open: false,
-		},
 	},
 
 	// Settings.
@@ -567,14 +564,6 @@ const reducer = ( state = initialState, action ) => {
 				limitExceedModal: action.payload,
 			},
 		};
-	} else if ( action.type === actionTypes.SET_CONTINUE_PROGRESS_MODAL ) {
-		return {
-			...state,
-			onboardingAI: {
-				...state.onboardingAI,
-				continueProgressModal: action.payload,
-			},
-		};
 	} else if ( action.type === actionTypes.SET_WEBSITE_TYPE_AI_STEP ) {
 		return {
 			...state,
@@ -628,10 +617,7 @@ const reducer = ( state = initialState, action ) => {
 	) {
 		return {
 			...state,
-			onboardingAI: {
-				...action.payload,
-				continueProgressModal: state.onboardingAI.continueProgressModal, // prevent this function from overriding continueProgressModal
-			},
+			onboardingAI: action.payload,
 		};
 	} else if ( action.type === actionTypes.SET_WEBSITE_TEMPLATES_AI_STEP ) {
 		return {

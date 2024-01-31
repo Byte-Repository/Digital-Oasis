@@ -128,6 +128,31 @@ class Widget_Image extends Widget_Base {
 			]
 		);
 
+		$this->add_responsive_control(
+			'align',
+			[
+				'label' => esc_html__( 'Alignment', 'elementor' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'elementor' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
 		$this->add_control(
 			'caption_source',
 			[
@@ -210,6 +235,15 @@ class Widget_Image extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'view',
+			[
+				'label' => esc_html__( 'View', 'elementor' ),
+				'type' => Controls_Manager::HIDDEN,
+				'default' => 'traditional',
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -217,31 +251,6 @@ class Widget_Image extends Widget_Base {
 			[
 				'label' => esc_html__( 'Image', 'elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_responsive_control(
-			'align',
-			[
-				'label' => esc_html__( 'Alignment', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'elementor' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'elementor' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'elementor' ),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
-				],
 			]
 		);
 
@@ -463,11 +472,10 @@ class Widget_Image extends Widget_Base {
 		$this->add_control(
 			'background_hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'elementor' ) . ' (s)',
+				'label' => esc_html__( 'Transition Duration', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 3,
 						'step' => 0.1,
 					],
@@ -615,18 +623,10 @@ class Widget_Image extends Widget_Base {
 			[
 				'label' => esc_html__( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
+						'min' => 0,
 						'max' => 100,
-					],
-					'em' => [
-						'min' => 0,
-						'max' => 10,
-					],
-					'rem' => [
-						'min' => 0,
-						'max' => 10,
 					],
 				],
 				'selectors' => [
@@ -690,6 +690,10 @@ class Widget_Image extends Widget_Base {
 			return;
 		}
 
+		if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) {
+			$this->add_render_attribute( 'wrapper', 'class', 'elementor-image' );
+		}
+
 		$has_caption = $this->has_caption( $settings );
 
 		$link = $this->get_link_url( $settings );
@@ -707,6 +711,9 @@ class Widget_Image extends Widget_Base {
 				$this->add_lightbox_data_attributes( 'link', $settings['image']['id'], $settings['open_lightbox'] );
 			}
 		} ?>
+		<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
+			<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
+		<?php } ?>
 			<?php if ( $has_caption ) : ?>
 				<figure class="wp-caption">
 			<?php endif; ?>
@@ -725,6 +732,9 @@ class Widget_Image extends Widget_Base {
 			<?php if ( $has_caption ) : ?>
 				</figure>
 			<?php endif; ?>
+		<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
+			</div>
+		<?php } ?>
 		<?php
 	}
 
@@ -793,6 +803,10 @@ class Widget_Image extends Widget_Base {
 				link_url = settings.image.url;
 			}
 
+			<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
+				#><div class="elementor-image{{ settings.shape ? ' elementor-image-shape-' + settings.shape : '' }}"><#
+			<?php } ?>
+
 			var imgClass = '';
 
 			if ( '' !== settings.hover_animation ) {
@@ -819,6 +833,11 @@ class Widget_Image extends Widget_Base {
 			if ( hasCaption() ) {
 				#></figure><#
 			}
+
+			<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
+				#></div><#
+			<?php } ?>
+
 		} #>
 		<?php
 	}

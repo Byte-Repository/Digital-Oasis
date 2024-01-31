@@ -571,7 +571,7 @@ class WPForms_Field_Email extends WPForms_Field {
 		$name = ! empty( $form_data['fields'][ $field_id ] ['label'] ) ? $form_data['fields'][ $field_id ]['label'] : '';
 
 		// Set final field details.
-		wpforms()->get( 'process' )->fields[ $field_id ] = [
+		wpforms()->process->fields[ $field_id ] = [
 			'name'  => sanitize_text_field( $name ),
 			'value' => sanitize_text_field( $this->decode_punycode( $value ) ),
 			'id'    => absint( $field_id ),
@@ -656,17 +656,13 @@ class WPForms_Field_Email extends WPForms_Field {
 
 		$form_id  = filter_input( INPUT_POST, 'form_id', FILTER_SANITIZE_NUMBER_INT );
 		$field_id = filter_input( INPUT_POST, 'field_id', FILTER_SANITIZE_NUMBER_INT );
-		$email    = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES );
-
-		// The valid email can contain such characters: !#$%&'*+/=?^_`{|}~-.
-		// After filtering the email, we need to decode the `&amp;`, otherwise the email with `&` couldn't be properly recognized.
-		$email = str_replace( '&amp;', '&', $email );
+		$email    = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
 		if ( ! $form_id || ! $field_id || ! $email ) {
 			wp_send_json_error();
 		}
 
-		$form_data = wpforms()->get( 'form' )->get(
+		$form_data = wpforms()->form->get(
 			$form_id,
 			[ 'content_only' => true ]
 		);
@@ -1001,11 +997,8 @@ class WPForms_Field_Email extends WPForms_Field {
 	 */
 	private function sanitize_email_pattern( $pattern ) {
 
-		$chars   = [ '.', '*', '/' ];
-		$replace = [ '\.', '.*', '\/' ];
-
 		// Create regex pattern from a string.
-		return '^' . str_replace( $chars, $replace, $pattern ) . '$';
+		return '^' . str_replace( [ '.', '*' ], [ '\.', '.*' ], $pattern ) . '$';
 	}
 
 	/**

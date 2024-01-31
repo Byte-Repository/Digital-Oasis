@@ -180,7 +180,7 @@ class Payments {
 				</div>
 			<?php endif; ?>
 
-			<div class="wpforms-admin-content wpforms-admin-settings">
+			<div class="wpforms-admin-content">
 				<?php $this->view->display(); ?>
 			</div>
 		</div>

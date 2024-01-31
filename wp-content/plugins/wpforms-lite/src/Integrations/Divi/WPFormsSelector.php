@@ -42,23 +42,18 @@ class WPFormsSelector extends ET_Builder_Module {
 	 *
 	 * @return array
 	 */
-	public function get_fields(): array {
+	public function get_fields() {
 
-		$forms         = wpforms()->get( 'form' )->get( '', [ 'order' => 'DESC' ] );
-		$default_value = '';
+		$forms    = wpforms()->form->get( '', [ 'order' => 'DESC' ] );
+		$forms    = ! empty( $forms ) ? wp_list_pluck( $forms, 'post_title', 'ID' ) : [];
+		$forms    = array_map(
+			function ( $form ) {
 
-		if ( ! empty( $forms ) ) {
-			$forms         = wp_list_pluck( $forms, 'post_title', 'ID' );
-			$forms         = array_map(
-				function ( $form ) {
-					// phpcs:ignore WPForms.Formatting.EmptyLineBeforeReturn.RemoveEmptyLineBeforeReturnStatement
-					return htmlspecialchars_decode( $form, ENT_QUOTES );
-				},
-				$forms
-			);
-			$forms[0]      = esc_html__( 'Select form', 'wpforms-lite' );
-			$default_value = 0;
-		}
+				return htmlspecialchars_decode( $form, ENT_QUOTES );
+			},
+			$forms
+		);
+		$forms[0] = esc_html__( 'Select form', 'wpforms-lite' );
 
 		return [
 			'form_id'    => [
@@ -67,7 +62,6 @@ class WPFormsSelector extends ET_Builder_Module {
 				'option_category' => 'basic_option',
 				'toggle_slug'     => 'main_content',
 				'options'         => $forms,
-				'default'         => $default_value,
 			],
 			'show_title' => [
 				'label'           => esc_html__( 'Show Title', 'wpforms-lite' ),

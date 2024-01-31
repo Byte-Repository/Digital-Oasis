@@ -168,7 +168,7 @@ class CustomerService extends \WPForms\Vendor\Stripe\Service\AbstractService
         return $this->request('post', $this->buildPath('/v1/customers/%s/sources', $parentId), $params, $opts);
     }
     /**
-     * Creates a new <code>tax_id</code> object for a customer.
+     * Creates a new <code>TaxID</code> object for a customer.
      *
      * @param string $parentId
      * @param null|array $params
@@ -214,8 +214,6 @@ class CustomerService extends \WPForms\Vendor\Stripe\Service\AbstractService
         return $this->request('delete', $this->buildPath('/v1/customers/%s/discount', $id), $params, $opts);
     }
     /**
-     * Delete a specified source for a given customer.
-     *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
@@ -230,7 +228,7 @@ class CustomerService extends \WPForms\Vendor\Stripe\Service\AbstractService
         return $this->request('delete', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
     }
     /**
-     * Deletes an existing <code>tax_id</code> object.
+     * Deletes an existing <code>TaxID</code> object.
      *
      * @param string $parentId
      * @param string $id
@@ -342,7 +340,7 @@ class CustomerService extends \WPForms\Vendor\Stripe\Service\AbstractService
         return $this->request('get', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
     }
     /**
-     * Retrieves the <code>tax_id</code> object with the given identifier.
+     * Retrieves the <code>TaxID</code> object with the given identifier.
      *
      * @param string $parentId
      * @param string $id
@@ -436,8 +434,6 @@ class CustomerService extends \WPForms\Vendor\Stripe\Service\AbstractService
         return $this->request('post', $this->buildPath('/v1/customers/%s/cash_balance', $parentId), $params, $opts);
     }
     /**
-     * Update a specified source for a given customer.
-     *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
@@ -452,8 +448,6 @@ class CustomerService extends \WPForms\Vendor\Stripe\Service\AbstractService
         return $this->request('post', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
     }
     /**
-     * Verify a specified bank account for a given customer.
-     *
      * @param string $parentId
      * @param string $id
      * @param null|array $params

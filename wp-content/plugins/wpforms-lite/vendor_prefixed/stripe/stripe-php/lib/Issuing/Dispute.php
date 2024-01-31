@@ -28,11 +28,6 @@ class Dispute extends \WPForms\Vendor\Stripe\ApiResource
     use \WPForms\Vendor\Stripe\ApiOperations\Create;
     use \WPForms\Vendor\Stripe\ApiOperations\Retrieve;
     use \WPForms\Vendor\Stripe\ApiOperations\Update;
-    const STATUS_EXPIRED = 'expired';
-    const STATUS_LOST = 'lost';
-    const STATUS_SUBMITTED = 'submitted';
-    const STATUS_UNSUBMITTED = 'unsubmitted';
-    const STATUS_WON = 'won';
     /**
      * @param null|array $params
      * @param null|array|string $opts

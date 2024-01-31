@@ -37,12 +37,10 @@ class Loader {
 	 */
 	protected function populate_classes() {
 
-		$this->populate_common();
 		$this->populate_frontend();
 		$this->populate_admin();
 		$this->populate_fields();
 		$this->populate_forms_overview();
-		$this->populate_entries();
 		$this->populate_builder();
 		$this->populate_db();
 		$this->populate_migrations();
@@ -54,19 +52,6 @@ class Loader {
 		$this->populate_education();
 		$this->populate_robots();
 		$this->populate_anti_spam();
-	}
-
-	/**
-	 * Populate common classes.
-	 *
-	 * @since 1.8.6
-	 */
-	private function populate_common() {
-
-		$this->classes[] = [
-			'name' => 'API',
-			'id'   => 'api',
-		];
 	}
 
 	/**
@@ -175,10 +160,6 @@ class Loader {
 				'id'   => 'addons_cache',
 			],
 			[
-				'name' => 'Admin\CoreInfoCache',
-				'id'   => 'core_info_cache',
-			],
-			[
 				'name' => 'Admin\Addons\Addons',
 				'id'   => 'addons',
 			],
@@ -194,13 +175,30 @@ class Loader {
 				'name' => 'Admin\Notifications\EventDriven',
 			],
 			[
+				'name' => 'Admin\Entries\Overview\Page',
+				'hook' => 'admin_init',
+			],
+			[
 				'name' => 'Admin\Entries\Handler',
 				'hook' => 'admin_init',
 			],
 			[
-				'name' => 'Admin\Pages\Templates',
-				'id'   => 'templates_page',
+				'name'      => 'Admin\Entries\Overview\Ajax',
+				'hook'      => 'admin_init',
+				'run'       => 'hooks',
+				'condition' => wpforms_is_admin_ajax(),
+			],
+			[
+				'name' => 'Admin\Entries\Edit',
+				'id'   => 'entries_edit',
 				'hook' => 'admin_init',
+			],
+			[
+				'name' => 'Admin\Pages\Templates',
+				'hook' => 'admin_init',
+			],
+			[
+				'name' => 'Admin\Entries\Export\Export',
 			],
 			[
 				'name' => 'Admin\Challenge',
@@ -267,15 +265,15 @@ class Loader {
 				'hook' => wpforms()->is_pro() ? 'admin_init' : 'init',
 			],
 			[
+				'name' => 'Admin\Entries\DefaultScreen',
+				'hook' => 'admin_init',
+			],
+			[
 				'name' => 'Emails\Preview',
 				'hook' => 'admin_init',
 			],
 			[
 				'name' => 'Admin\Addons\GoogleSheets',
-				'hook' => 'admin_init',
-			],
-			[
-				'name' => 'Admin\PluginList',
 				'hook' => 'admin_init',
 			]
 		);
@@ -321,20 +319,12 @@ class Loader {
 	 */
 	private function populate_forms_overview() {
 
-		if ( ! wpforms_is_admin_page( 'overview' ) && ! wpforms_is_admin_ajax() ) {
+		if ( ! wpforms_is_admin_page( 'overview' ) && ! wp_doing_ajax() ) {
 			return;
 		}
 
 		array_push(
 			$this->classes,
-			[
-				'name' => 'Admin\Forms\Page',
-				'id'   => 'forms_overview',
-			],
-			[
-				'name' => 'Admin\Forms\Ajax\Columns',
-				'id'   => 'forms_columns_ajax',
-			],
 			[
 				'name' => 'Admin\Forms\Ajax\Tags',
 				'id'   => 'forms_tags_ajax',
@@ -354,53 +344,6 @@ class Loader {
 			[
 				'name' => 'Admin\Forms\Tags',
 				'id'   => 'forms_tags',
-			]
-		);
-	}
-
-	/**
-	 * Populate Entries related classes.
-	 *
-	 * @since 1.8.6
-	 */
-	private function populate_entries() {
-
-		array_push(
-			$this->classes,
-			[
-				'name' => 'Admin\Entries\PageOptions',
-				'id'   => 'entries_page_options',
-			],
-			[
-				'name' => 'Admin\Entries\Page',
-				'id'   => 'entries_list_page',
-				'hook' => 'admin_init',
-			],
-			[
-				'name' => 'Admin\Entries\Overview\Page',
-				'hook' => 'admin_init',
-			],
-			[
-				'name'      => 'Admin\Entries\Overview\Ajax',
-				'hook'      => 'admin_init',
-				'run'       => 'hooks',
-				'condition' => wpforms_is_admin_ajax(),
-			],
-			[
-				'name' => 'Admin\Entries\Ajax\Columns',
-				'id'   => 'entries_columns_ajax',
-			],
-			[
-				'name' => 'Admin\Entries\Edit',
-				'id'   => 'entries_edit',
-				'hook' => 'admin_init',
-			],
-			[
-				'name' => 'Admin\Entries\Export\Export',
-			],
-			[
-				'name' => 'Admin\Entries\DefaultScreen',
-				'hook' => 'admin_init',
 			]
 		);
 	}
@@ -446,10 +389,6 @@ class Loader {
 				'hook' => 'wpforms_builder_init',
 			],
 			[
-				'name' => 'Admin\Builder\ContextMenu',
-				'hook' => 'wpforms_builder_init',
-			],
-			[
 				'name' => 'Admin\Builder\Notifications\Advanced\Settings',
 			],
 			[
@@ -457,9 +396,6 @@ class Loader {
 			],
 			[
 				'name' => 'Admin\Builder\Notifications\Advanced\EntryCsvAttachment',
-			],
-			[
-				'name' => 'Admin\Builder\Ajax\PanelLoader',
 			]
 		);
 	}
@@ -560,11 +496,14 @@ class Loader {
 	 */
 	private function populate_smart_tags() {
 
-		$this->classes[] = [
-			'name' => 'SmartTags\SmartTags',
-			'id'   => 'smart_tags',
-			'run'  => 'hooks',
-		];
+		array_push(
+			$this->classes,
+			[
+				'name' => 'SmartTags\SmartTags',
+				'id'   => 'smart_tags',
+				'run'  => 'hooks',
+			]
+		);
 	}
 
 	/**
@@ -574,12 +513,15 @@ class Loader {
 	 */
 	private function populate_logger() {
 
-		$this->classes[] = [
-			'name' => 'Logger\Log',
-			'id'   => 'log',
-			'hook' => false,
-			'run'  => 'hooks',
-		];
+		array_push(
+			$this->classes,
+			[
+				'name' => 'Logger\Log',
+				'id'   => 'log',
+				'hook' => false,
+				'run'  => 'hooks',
+			]
+		);
 	}
 
 	/**

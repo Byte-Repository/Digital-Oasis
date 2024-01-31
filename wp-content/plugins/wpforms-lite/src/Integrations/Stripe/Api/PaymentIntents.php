@@ -435,17 +435,14 @@ class PaymentIntents extends Common implements ApiInterface {
 
 		try {
 
-			if ( isset( $args['customer_email'] ) || isset( $args['customer_name'] ) ) {
+			if ( isset( $args['customer_email'] ) ) {
 
-				$name  = $args['customer_name'] ?? '';
-				$email = $args['customer_email'] ?? '';
-
-				$this->set_customer( $email, $name );
+				$this->set_customer( $args['customer_email'] );
 				$this->attach_customer_to_payment();
 
 				$args['customer'] = $this->get_customer( 'id' );
 
-				unset( $args['customer_email'], $args['customer_name'] );
+				unset( $args['customer_email'] );
 			}
 
 			$this->intent = PaymentIntent::create( $args, Helpers::get_auth_opts() );
@@ -554,34 +551,21 @@ class PaymentIntents extends Common implements ApiInterface {
 
 		try {
 
-			$name = $args['customer_name'] ?? '';
-
-			$this->set_customer( $args['email'], $name );
+			$this->set_customer( $args['email'] );
 			$sub_args['customer'] = $this->get_customer( 'id' );
 
-			if ( Helpers::is_payment_element_enabled() ) {
+			$new_payment_method = $this->attach_customer_to_payment();
 
-				$sub_args['payment_behavior'] = 'default_incomplete';
-				$sub_args['off_session']      = true;
-				$sub_args['payment_settings'] = [
-					'payment_method_types'        => [ 'card', 'link' ],
-					'save_default_payment_method' => 'on_subscription',
-				];
-			} else {
+			if ( is_null( $new_payment_method ) ) {
+				return;
+			}
 
-				$new_payment_method = $this->attach_customer_to_payment();
+			// Check whether a default PaymentMethod needs to be explicitly set.
+			$selected_payment_method_id = $this->select_subscription_default_payment_method( $new_payment_method );
 
-				if ( is_null( $new_payment_method ) ) {
-					return;
-				}
-
-				// Check whether a default PaymentMethod needs to be explicitly set.
-				$selected_payment_method_id = $this->select_subscription_default_payment_method( $new_payment_method );
-
-				if ( $selected_payment_method_id ) {
-					// Explicitly set a PaymentMethod for this Subscription because default Customer's PaymentMethod cannot be used.
-					$sub_args['default_payment_method'] = $selected_payment_method_id;
-				}
+			if ( $selected_payment_method_id ) {
+				// Explicitly set a PaymentMethod for this Subscription because default Customer's PaymentMethod cannot be used.
+				$sub_args['default_payment_method'] = $selected_payment_method_id;
 			}
 
 			// Create the subscription.
@@ -589,7 +573,7 @@ class PaymentIntents extends Common implements ApiInterface {
 
 			$this->intent = $this->subscription->latest_invoice->payment_intent;
 
-			if ( ! $this->intent || ! in_array( $this->intent->status, [ 'succeeded', 'requires_action', 'requires_confirmation', 'requires_payment_method' ], true ) ) {
+			if ( ! $this->intent || ! in_array( $this->intent->status, [ 'succeeded', 'requires_action', 'requires_confirmation' ], true ) ) {
 				$this->error = esc_html__( 'Stripe subscription stopped. invalid PaymentIntent status.', 'wpforms-lite' );
 
 				return;
@@ -601,7 +585,7 @@ class PaymentIntents extends Common implements ApiInterface {
 
 			$this->set_bypass_captcha_3dsecure_token();
 
-			if ( in_array( $this->intent->status , [ 'requires_confirmation', 'requires_payment_method' ], true ) ) {
+			if ( $this->intent->status === 'requires_confirmation' ) {
 				$this->request_confirm_payment_ajax( $this->intent );
 			}
 

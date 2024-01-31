@@ -108,9 +108,6 @@ class Widget_Shortcode extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
-				'ai' => [
-					'active' => false,
-				],
 				'placeholder' => '[gallery id="123" size="medium"]',
 				'default' => '',
 			]

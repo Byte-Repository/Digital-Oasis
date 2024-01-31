@@ -145,17 +145,13 @@ var WPFormsStripeElements = window.WPFormsStripeElements || ( function( document
 			const textColor = $hiddenInput.css( 'color' );
 			const fontSize = $hiddenInput.css( 'font-size' );
 
-			const style = {
+			let style = {
 				base: {
-					fontSize,
-					color: textColor,
-					'::placeholder': {
-						color: textColor,
-						fontSize,
+					fontSize : fontSize,
+					color    : textColor,
+					'::placeholder' : {
+						fontSize : fontSize,
 					},
-				},
-				invalid: {
-					color: textColor,
 				},
 			};
 
@@ -169,7 +165,7 @@ var WPFormsStripeElements = window.WPFormsStripeElements || ( function( document
 
 			if ( ! regExp.test( fontFamily ) ) {
 				style.base.fontFamily = fontFamily;
-				style.base[ '::placeholder' ].fontFamily = fontFamily;
+				style.base['::placeholder'].fontFamily = fontFamily;
 			}
 
 			return style;
@@ -402,32 +398,14 @@ var WPFormsStripeElements = window.WPFormsStripeElements || ( function( document
 		},
 
 		/**
-		 * Get CSS property value.
-		 * In case of exception return empty string.
-		 *
-		 * @since 1.8.6
-		 *
-		 * @param {jQuery} $element Element.
-		 * @param {string} property Property.
-		 *
-		 * @return {string} Property value.
-		 */
-		getCssPropertyValue( $element, property ) {
-			try {
-				return $element.css( property );
-			} catch ( e ) {
-				return '';
-			}
-		},
-
-		/**
 		 * Update Card Element styles in Modern Markup mode.
 		 *
 		 * @since 1.8.2
 		 *
 		 * @param {jQuery} $form Form object.
 		 */
-		updateCardElementStylesModern( $form ) {
+		updateCardElementStylesModern: function( $form ) {
+
 			// Should work only in Modern Markup mode.
 			if ( ! window.WPForms || ! WPForms.FrontendModern || ! $.isEmptyObject( wpforms_stripe.data.element_style ) ) {
 				return;
@@ -437,30 +415,28 @@ var WPFormsStripeElements = window.WPFormsStripeElements || ( function( document
 				return;
 			}
 
+			let cssVars = WPForms.FrontendModern.getCssVars( $form );
+
 			$form.find( '.wpforms-stripe-credit-card-hidden-input' ).each( function() {
+
 				const $hiddenInput = $( this );
 				const cardElement = $hiddenInput.data( 'stripe-element' );
-
-				const inputStyle = {
-					fontSize: app.getCssPropertyValue( $hiddenInput, 'font-size' ),
-					colorText: app.getCssPropertyValue( $hiddenInput, 'color' ),
-				};
 
 				if ( ! cardElement ) {
 					return;
 				}
 
 				const styles = {
-					base: {
-						color: inputStyle.colorText,
-						fontSize: inputStyle.fontSize,
+					base : {
+						color: cssVars['field-text-color'],
+						fontSize: cssVars['field-size-font-size'],
 						'::placeholder': {
-							color: WPForms.FrontendModern.getColorWithOpacity( inputStyle.colorText, '0.5' ),
-							fontSize: inputStyle.fontSize,
+							color: WPForms.FrontendModern.getColorWithOpacity( cssVars['field-text-color'], '0.5' ),
+							fontSize: cssVars['field-size-font-size'],
 						},
 					},
 					invalid: {
-						color: inputStyle.colorText,
+						color: cssVars['field-text-color'],
 					},
 				};
 

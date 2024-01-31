@@ -160,19 +160,12 @@ class WPForms_Field_Number extends WPForms_Field {
 			empty( $value ) &&
 			! is_numeric( $value )
 		) {
-			wpforms()->get( 'process' )->errors[ $form_id ][ $field_id ] = wpforms_get_required_label();
+			wpforms()->process->errors[ $form_id ][ $field_id ] = wpforms_get_required_label();
 		}
 
 		// Check if value is numeric.
 		if ( ! empty( $value ) && ! is_numeric( $value ) ) {
-			/**
-			 * Filter the error message for the number field.
-			 *
-			 * @since 1.0.0
-			 *
-			 * @param string $message Error message.
-			 */
-			wpforms()->get( 'process' )->errors[ $form_id ][ $field_id ] = apply_filters( 'wpforms_valid_number_label', esc_html__( 'Please enter a valid number.', 'wpforms-lite' ) ); // phpcs:ignore WPForms.PHP.ValidateHooks.InvalidHookName
+			wpforms()->process->errors[ $form_id ][ $field_id ] = apply_filters( 'wpforms_valid_number_label', esc_html__( 'Please enter a valid number.', 'wpforms-lite' ) );
 		}
 	}
 
@@ -191,7 +184,7 @@ class WPForms_Field_Number extends WPForms_Field {
 		$name = ! empty( $form_data['fields'][ $field_id ]['label'] ) ? $form_data['fields'][ $field_id ]['label'] : '';
 
 		// Set final field details.
-		wpforms()->get( 'process' )->fields[ $field_id ] = [
+		wpforms()->process->fields[ $field_id ] = [
 			'name'  => sanitize_text_field( $name ),
 			'value' => $this->sanitize_value( $field_submit ),
 			'id'    => absint( $field_id ),
