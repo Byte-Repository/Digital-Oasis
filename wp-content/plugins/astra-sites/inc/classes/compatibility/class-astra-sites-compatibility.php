@@ -76,6 +76,9 @@ if ( ! class_exists( 'Astra_Sites_Compatibility' ) ) :
 
 			// Plugin - Cartflows.
 			require_once ASTRA_SITES_DIR . 'inc/classes/compatibility/cartflows/class-astra-sites-compatibility-cartflows.php';
+
+			// Plugin - Suretriggers.
+			require_once ASTRA_SITES_DIR . 'inc/classes/compatibility/suretriggers/class-astra-sites-compatibility-suretriggers.php';
 		}
 
 	}

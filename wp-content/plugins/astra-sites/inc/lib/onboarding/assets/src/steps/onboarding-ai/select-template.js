@@ -11,7 +11,7 @@ import { ColumnItem } from './components/column-item';
 // import ConfirmationPopup from './confirmation-popup';
 import Input from './components/input';
 import KeywordSuggestions from './components/keyword-suggestions';
-import ConfirmationModal from './confirm-details-popup';
+// import ConfirmationModal from './confirm-details-popup';
 import Divider from './components/divider';
 
 const SelectTemplate = ( {
@@ -27,21 +27,16 @@ const SelectTemplate = ( {
 	const {
 		// setWebsiteImagesAIStep,
 		// toggleOnboardingAIStep,
-		setWebsiteInfoAIStep,
 		setWebsiteTemplatesAIStep,
 		setWebsiteSelectedTemplateAIStep,
 		setWebsiteTemplateSearchResultsAIStep,
-		setLimitExceedModal,
 	} = useDispatch( STORE_KEY );
 
 	const {
 		stepsData: {
 			businessName,
-			selectedImages = [],
 			keywords = [],
 			businessType,
-			businessDetails,
-			businessContact,
 			// templateList,
 			selectedTemplate,
 			templateSearchResults,
@@ -60,9 +55,6 @@ const SelectTemplate = ( {
 			isNewUser: onboardingAI?.isNewUser,
 		};
 	} );
-
-	const [ openConfirmationPopup, setOpenConfirmationPopup ] =
-		useState( false );
 
 	const parentContainer = useRef( null );
 	const templatesContainer = useRef( null );
@@ -102,83 +94,6 @@ const SelectTemplate = ( {
 	// 		}
 	// 	} );
 	// };
-
-	const handleOpenConfirmationPopup = () => {
-		const zipPlans = astraSitesVars?.zip_plans;
-		const sitesRemaining = zipPlans?.plan_data?.remaining;
-		const aiSitesRemainingCount = sitesRemaining?.ai_sites_count;
-		const allSitesRemainingCount = sitesRemaining?.all_sites_count;
-
-		if (
-			( typeof aiSitesRemainingCount === 'number' &&
-				aiSitesRemainingCount <= 0 ) ||
-			( typeof allSitesRemainingCount === 'number' &&
-				allSitesRemainingCount <= 0 )
-		) {
-			setLimitExceedModal( {
-				open: true,
-			} );
-			return;
-		}
-
-		setOpenConfirmationPopup( true );
-	};
-
-	const handleGenerateContent = async ( event ) => {
-		event.preventDefault();
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'ast-block-templates-ai-content' );
-		formData.append( 'security', astraSitesVars.ai_content_ajax_nonce );
-		formData.append( 'business_name', businessName );
-		formData.append( 'business_desc', businessDetails );
-		formData.append( 'business_category', businessType.slug );
-		formData.append( 'images', JSON.stringify( selectedImages ) );
-		formData.append( 'image_keywords', JSON.stringify( keywords ) );
-		formData.append( 'business_address', businessContact?.address || '' );
-		formData.append( 'business_phone', businessContact?.phone || '' );
-		formData.append( 'business_email', businessContact?.email || '' );
-		formData.append(
-			'social_profiles',
-			JSON.stringify( businessContact?.socialMedia || [] )
-		);
-
-		const response = await apiFetch( {
-			path: 'zipwp/v1/site',
-			method: 'POST',
-			data: {
-				template: selectedTemplate,
-				business_email: businessContact?.email,
-				business_description: businessDetails,
-				business_name: businessName,
-				business_phone: businessContact?.phone,
-				business_address: businessContact?.address,
-				business_category: businessType.slug,
-				business_category_name: businessType.name,
-				image_keyword: keywords,
-				social_profiles: businessContact?.socialMedia,
-				images: selectedImages,
-			},
-		} );
-
-		if ( response.success ) {
-			// Close the onboarding screen on success.
-			setWebsiteInfoAIStep( response.data.data );
-			onClickNext();
-		} else {
-			// Handle error.
-			console.error( response );
-			const message = response?.data?.data;
-			if (
-				typeof message === 'string' &&
-				message.includes( 'Usage limit' )
-			) {
-				setLimitExceedModal( {
-					open: true,
-				} );
-			}
-		}
-	};
 
 	const TEMPLATE_TYPE = {
 		RECOMMENDED: 'recommended',
@@ -414,7 +329,7 @@ const SelectTemplate = ( {
 				) } */ }
 				<NavigationButtons
 					onClickPrevious={ onClickPrevious }
-					onClickContinue={ handleOpenConfirmationPopup }
+					onClickContinue={ onClickNext }
 					disableContinue={ ! selectedTemplate }
 				/>
 			</div>
@@ -427,11 +342,11 @@ const SelectTemplate = ( {
 				/>
 			</div> */ }
 
-			<ConfirmationModal
+			{/* <ConfirmationModal
 				open={ openConfirmationPopup }
 				setOpen={ setOpenConfirmationPopup }
 				onClickGenerate={ handleGenerateContent }
-			/>
+			/> */}
 		</div>
 	);
 };

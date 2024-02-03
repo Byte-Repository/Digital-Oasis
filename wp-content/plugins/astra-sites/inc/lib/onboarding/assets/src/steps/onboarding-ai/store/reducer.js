@@ -173,11 +173,15 @@ export const initialState = {
 				list: [],
 				currentPage: 0,
 			},
+			siteFeatures: [],
 		},
 		websiteInfo: aiStepValues?.websiteInfo || {},
 		websiteVersionList: [],
 		selectedWebsiteVersion: null,
 		limitExceedModal: {
+			open: false,
+		},
+		continueProgressModal: {
 			open: false,
 		},
 	},
@@ -495,7 +499,7 @@ const reducer = ( state = initialState, action ) => {
 			disableAi: actionTypes?.payload ?? ! state.disableAi,
 		};
 	} else if ( action.type === actionTypes.SET_NEXT_AI_STEP ) {
-		const TOTAL_STEPS = 11;
+		const TOTAL_STEPS = 12;
 		const nextStep = state.onboardingAI.currentStep + 1;
 		if ( nextStep > TOTAL_STEPS ) {
 			return state;
@@ -564,6 +568,14 @@ const reducer = ( state = initialState, action ) => {
 				limitExceedModal: action.payload,
 			},
 		};
+	} else if ( action.type === actionTypes.SET_CONTINUE_PROGRESS_MODAL ) {
+		return {
+			...state,
+			onboardingAI: {
+				...state.onboardingAI,
+				continueProgressModal: action.payload,
+			},
+		};
 	} else if ( action.type === actionTypes.SET_WEBSITE_TYPE_AI_STEP ) {
 		return {
 			...state,
@@ -617,7 +629,10 @@ const reducer = ( state = initialState, action ) => {
 	) {
 		return {
 			...state,
-			onboardingAI: action.payload,
+			onboardingAI: {
+				...action.payload,
+				continueProgressModal: state.onboardingAI.continueProgressModal, // prevent this function from overriding continueProgressModal
+			},
 		};
 	} else if ( action.type === actionTypes.SET_WEBSITE_TEMPLATES_AI_STEP ) {
 		return {
@@ -967,6 +982,43 @@ const reducer = ( state = initialState, action ) => {
 				showOnboarding: ! state.onboardingAI.showOnboarding,
 				updateImages: ! state.onboardingAI.updateImages,
 				currentStep: ! state.onboardingAI.updateImages ? 6 : 1,
+			},
+		};
+	}
+
+	if ( action.type === actionTypes.STORE_SITE_FEATURES ) {
+		const stepData = { ...state.onboardingAI.stepData };
+		return {
+			...state,
+			onboardingAI: {
+				...state.onboardingAI,
+				stepData: {
+					...stepData,
+					siteFeatures: action.payload,
+				},
+			},
+		};
+	}
+
+	if ( action.type === actionTypes.SET_SITE_FEATURES ) {
+		return {
+			...state,
+			onboardingAI: {
+				...state.onboardingAI,
+				stepData: {
+					...state.onboardingAI.stepData,
+					siteFeatures: state.onboardingAI.stepData.siteFeatures.map(
+						( item ) => {
+							if ( item.id === action.payload ) {
+								return {
+									...item,
+									enabled: ! item.enabled,
+								};
+							}
+							return item;
+						}
+					),
+				},
 			},
 		};
 	}

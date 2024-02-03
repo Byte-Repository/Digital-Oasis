@@ -355,7 +355,84 @@ class Astra_Sites_ZipWP_Api {
 				),
 			)
 		);
+
+		register_rest_route(
+			$namespace,
+			'/site-features/',
+			array(
+				array(
+					'methods'             => \WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_site_features' ),
+					'permission_callback' => array( $this, 'get_item_permissions_check' ),
+				),
+			)
+		);
     }
+
+	/**
+	 * Get ZipWP Features list.
+	 *
+	 * @param \WP_REST_Request $request Full details about the request.
+	 * @return mixed
+	 */
+	public function get_site_features( $request ) {
+		$nonce = $request->get_header( 'X-WP-Nonce' );
+		// Verify the nonce.
+		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
+			wp_send_json_error(
+				array(
+					'data' => __( 'Nonce verification failed.', 'astra-sites' ),
+					'status'  => false,
+
+				)
+			);
+		}
+
+		$api_endpoint = $this->get_api_domain() . '/sites/features/';
+		$request_args = array(
+			'headers' => $this->get_api_headers(),
+			'timeout' => 100,
+		);
+		$response = wp_remote_get( $api_endpoint, $request_args );
+
+		if ( is_wp_error( $response ) ) {
+			// There was an error in the request.
+			wp_send_json_error(
+				array(
+					'data' => 'Failed ' . $response->get_error_message(),
+					'status'  => false,
+
+				)
+			);
+		}
+		$response_code = wp_remote_retrieve_response_code( $response );
+		$response_body = wp_remote_retrieve_body( $response );
+		if ( 200 === $response_code ) {
+			$response_data = json_decode( $response_body, true );
+			if ( $response_data ) {
+				wp_send_json_success(
+					array(
+						'data' => $response_data['data'],
+						'status'  => true,
+					)
+				);
+			}
+			wp_send_json_error(
+				array(
+					'data' => 'Failed ' . $response_data,
+					'status'  => false,
+
+				)
+			);
+		}
+		wp_send_json_error(
+			array(
+				'data' => 'Failed ' . $response_body,
+				'status'  => false,
+
+			)
+		);
+	}
 
 	/**
 	 * Create site.
@@ -400,7 +477,8 @@ class Astra_Sites_ZipWP_Api {
 			'site_source' => 'starter-templates',
 			'site_config' => [
 				'clickjackingProtection' => false,
-			]
+			],
+			'site_features' => isset($request['site_features']) ? $request['site_features'] : [],
 		);
 
 		$request_args = array(

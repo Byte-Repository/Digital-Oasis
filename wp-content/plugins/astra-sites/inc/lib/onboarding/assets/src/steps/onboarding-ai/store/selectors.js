@@ -180,6 +180,11 @@ const selectors = {
 	getLimitExceedModalInfo( { onboardingAI: { limitExceedModal } } ) {
 		return limitExceedModal;
 	},
+	getContinueProgressModalInfo( {
+		onboardingAI: { continueProgressModal },
+	} ) {
+		return continueProgressModal;
+	},
 	getDisableAi( { disableAi } ) {
 		return disableAi;
 	},
@@ -205,6 +210,14 @@ const selectors = {
 
 	getCreditsDetails( { credits } ) {
 		return credits;
+	},
+
+	getSiteFeatures( {
+		onboardingAI: {
+			stepData: { siteFeatures },
+		},
+	} ) {
+		return siteFeatures;
 	},
 };
 

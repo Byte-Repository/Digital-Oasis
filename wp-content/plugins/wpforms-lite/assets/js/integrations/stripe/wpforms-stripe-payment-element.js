@@ -64,10 +64,9 @@ var WPFormsStripePaymentElement = window.WPFormsStripePaymentElement || ( functi
 
 				app.initializeFormsDefaultObject();
 
-				$( '.wpforms-stripe form' ).each( app.setupStripeForm );
-
-				// Initialize in Conversational Form on field activation.
-				$( '.wpforms-field-stripe-credit-card' ).on( 'wpformsConvFormsFieldActivationAfter', app.convFormsFieldActivationAfter );
+				$( '.wpforms-stripe form' )
+					.each( app.setupStripeForm )
+					.on( 'wpformsConvFormsFieldActivationAfter', app.convFormsFieldActivationAfter ); // Initialize in Conversational Form on field activation.
 			} );
 
 			$( document )

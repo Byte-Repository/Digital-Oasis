@@ -311,6 +311,12 @@ const actions = {
 			payload: limitExceedModal,
 		};
 	},
+	setContinueProgressModal( continueProgressModal ) {
+		return {
+			type: actionsTypes.SET_CONTINUE_PROGRESS_MODAL,
+			payload: continueProgressModal,
+		};
+	},
 
 	setWebsiteTypeAIStep( websiteType ) {
 		return {
@@ -513,6 +519,20 @@ const actions = {
 	toggleUpdateOnboardingImages() {
 		return {
 			type: actionsTypes.TOGGLE_UPDATE_ONBOARDING_IMAGES,
+		};
+	},
+
+	storeSiteFeatures( payload ) {
+		return {
+			type: actionsTypes.STORE_SITE_FEATURES,
+			payload,
+		};
+	},
+
+	setSiteFeatures( payload ) {
+		return {
+			type: actionsTypes.SET_SITE_FEATURES,
+			payload,
 		};
 	},
 };

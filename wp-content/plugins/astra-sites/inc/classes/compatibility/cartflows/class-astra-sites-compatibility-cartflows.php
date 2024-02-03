@@ -49,8 +49,7 @@ if ( ! class_exists( 'Astra_Sites_Compatibility_Cartflows' ) ) :
 		 * @since 3.4.6
 		 */
 		public function __construct() {
-
-			add_action( 'init', array( $this, 'disable_cartflows_redirect' ) );
+			add_action( 'astra_sites_after_plugin_activation', array( $this, 'disable_cartflows_redirect' ) );
 		}
 
 		/**
@@ -59,9 +58,8 @@ if ( ! class_exists( 'Astra_Sites_Compatibility_Cartflows' ) ) :
 		 * @return void.
 		 */
 		public function disable_cartflows_redirect() {
-			if ( astra_sites_has_import_started() ) {
-				update_option( 'wcf_setup_skipped', true );
-			}
+			update_option( 'wcf_setup_skipped', true );
+			delete_option( 'wcf_start_onboarding' );
 		}
 	}
 
