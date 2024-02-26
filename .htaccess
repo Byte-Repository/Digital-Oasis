@@ -19,7 +19,7 @@ RewriteRule . /portfolio/index.php [L]
 # dynamically generated, and should only be modified via WordPress filters.
 # Any changes to the directives between these markers will be overwritten.
 <Files "C:\Users\Admin\Desktop\Personal\Xampp\htdocs\portfolio/wp-content/uploads\simply-static\\3ec2ca495239c78993dff741361a65f9-debug.txt">
-require all denied
-require host localhost
+	require all denied
+	require host localhost
 </Files>
 # END Simply Static

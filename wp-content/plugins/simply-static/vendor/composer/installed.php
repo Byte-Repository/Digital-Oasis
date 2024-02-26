@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f065ee2d7c043cc014af40e2f1d248b4a81193bd',
+    'reference' => 'fc495d92ceed98be1d28c1d8b98ba72ba96e548a',
     'name' => 'patrickposner/simply-static',
   ),
   'versions' => 
@@ -27,70 +27,70 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f065ee2d7c043cc014af40e2f1d248b4a81193bd',
+      'reference' => 'fc495d92ceed98be1d28c1d8b98ba72ba96e548a',
     ),
     'symfony/css-selector' => 
     array (
-      'pretty_version' => 'v5.4.26',
-      'version' => '5.4.26.0',
+      'pretty_version' => 'v5.4.35',
+      'version' => '5.4.35.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0ad3f7e9a1ab492c5b4214cf22a9dc55dcf8600a',
+      'reference' => '9e615d367e2bed41f633abb383948c96a2dbbfae',
     ),
     'symfony/polyfill-iconv' => 
     array (
-      'pretty_version' => 'v1.28.0',
-      'version' => '1.28.0.0',
+      'pretty_version' => 'v1.29.0',
+      'version' => '1.29.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '6de50471469b8c9afc38164452ab2b6170ee71c1',
+      'reference' => 'cd4226d140ecd3d0f13d32ed0a4a095ffe871d2f',
     ),
     'symfony/polyfill-intl-grapheme' => 
     array (
-      'pretty_version' => 'v1.28.0',
-      'version' => '1.28.0.0',
+      'pretty_version' => 'v1.29.0',
+      'version' => '1.29.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '875e90aeea2777b6f135677f618529449334a612',
+      'reference' => '32a9da87d7b3245e09ac426c83d334ae9f06f80f',
     ),
     'symfony/polyfill-intl-normalizer' => 
     array (
-      'pretty_version' => 'v1.28.0',
-      'version' => '1.28.0.0',
+      'pretty_version' => 'v1.29.0',
+      'version' => '1.29.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92',
+      'reference' => 'bc45c394692b948b4d383a08d7753968bed9a83d',
     ),
     'symfony/polyfill-mbstring' => 
     array (
-      'pretty_version' => 'v1.28.0',
-      'version' => '1.28.0.0',
+      'pretty_version' => 'v1.29.0',
+      'version' => '1.29.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '42292d99c55abe617799667f454222c54c60e229',
+      'reference' => '9773676c8a1bb1f8d4340a62efe641cf76eda7ec',
     ),
     'symfony/polyfill-php72' => 
     array (
-      'pretty_version' => 'v1.28.0',
-      'version' => '1.28.0.0',
+      'pretty_version' => 'v1.29.0',
+      'version' => '1.29.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '70f4aebd92afca2f865444d30a4d2151c13c3179',
+      'reference' => '861391a8da9a04cbad2d232ddd9e4893220d6e25',
     ),
     'symfony/polyfill-php80' => 
     array (
-      'pretty_version' => 'v1.28.0',
-      'version' => '1.28.0.0',
+      'pretty_version' => 'v1.29.0',
+      'version' => '1.29.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '6caa57379c4aec19c0a12a38b59b26487dcfe4b5',
+      'reference' => '87b68208d5c1188808dd7839ee1e6c8ec3b02f1b',
     ),
     'voku/portable-ascii' => 
     array (
