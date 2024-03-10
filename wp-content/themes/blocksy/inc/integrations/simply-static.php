@@ -80,6 +80,10 @@ add_action(
 			\Simply_Static\Setup_Task::add_additional_files_to_db(
 				BLOCKSY_PATH . '/static/bundle'
 			);
+
+			\Simply_Static\Setup_Task::add_additional_files_to_db(
+				BLOCKSY_PATH . '/framework/premium/static/bundle'
+			);
 		}
 	}
 );
